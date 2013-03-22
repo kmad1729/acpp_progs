@@ -40,6 +40,7 @@ int main()
 		++count;
 		sum += x;
 	}
+	cout << homework.push_back(0);
 
 	//write the result
 	streamsize prec = cout.precision();
