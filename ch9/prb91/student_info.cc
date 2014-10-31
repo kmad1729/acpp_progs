@@ -9,6 +9,7 @@ using std::string;
 istream& read_hw(istream& in, vector<double>& h)
 {
     if(in) {
+        //make sure h is not populated with previous homework entries
         h.clear();
 
         double x;
@@ -16,6 +17,7 @@ istream& read_hw(istream& in, vector<double>& h)
             h.push_back(x);
         }
 
+        //clearing hte istream flag
         in.clear();
     }
     return in;
