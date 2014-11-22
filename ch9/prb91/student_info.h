@@ -8,7 +8,7 @@
 
 class Student_info{
     public:
-        Student_info();
+        Student_info()
         Student_info(std::istream&);
 
         std::istream& read(std::istream&);
