@@ -68,6 +68,7 @@ int main()
     sl.push_back("led_zeppelin");
     sl.push_back("doors");
     sl.push_back("beatles");
+    sl.push_back("pink_floyd");
     sl.print_list();
     /*
     names[0] = "coldplay";
