@@ -1,7 +1,9 @@
 *
 !*.cc
 !*.h
+!*/
 *.exe
 *.swp
 *.out
 *~
+revise
