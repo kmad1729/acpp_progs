@@ -9,13 +9,14 @@ using std::cout;
 using std::endl;
 
 template <class In, class Elem>
-In my_find(In b, In e, Elem x)
+In my_find(In b, In e, const Elem& x)
 {
     while(b != e) {
-        if(*b++ == x)
+        if(*b == x)
             return b;
+        b++;
     }
-    return b;
+    return e;
 }
 
 int main()
