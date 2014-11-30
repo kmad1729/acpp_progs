@@ -1,12 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <string>
-#include <vector>
-
-using std::cout;
-using std::endl;
-using std::string;
-using std::vector;
+#include "my_include.h"
 
 template <class In, class Rev>
 bool my_equal(In b, In e, Rev f)
