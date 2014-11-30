@@ -38,4 +38,44 @@ vector<string> split(const string& s)
     return result;
 }
 
+vector<string> vcat(const vector<string>& top, const vector<string>& bottom) 
+{
+    vector<string> result(top.begin(), top.end());
+    my_copy(bottom.begin(), bottom.end(), back_inserter(result));
+    return result;
+}
+
+int main()
+{
+    //parsing the input
+    cout << "enter the top and bottom lines seperated by #" << endl;
+    string line;
+    vector<string> top,bottom;
+
+    while(getline(cin, line)) {
+        if (line[0] == '#') {
+            break;
+        }
+        top.push_back(line);
+    }
+
+    while(getline(cin, line)) {
+        bottom.push_back(line);
+    }
+
+    cout << "top lines --> " << endl;
+    print_vector_to_out(top);
+    cout << "bottom lines --> " << endl;
+    print_vector_to_out(bottom);
+
+    cout << string(40, '*') << endl;
+    cout << "after copying -->" << endl;
+    cout << string(40, '*') << endl;
+
+    print_vector_to_out(vcat(top, bottom));
+
+}
+
+
+
 
