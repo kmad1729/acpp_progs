@@ -1,4 +1,11 @@
+*
+!*.cc
+!*.h
+!*/
+!*.txt
+
 *.exe
 *.swp
 *.out
 *~
+revise
