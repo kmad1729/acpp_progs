@@ -30,8 +30,7 @@ int main()
     sort(students.begin(), students.end(), compare);
 
     for(vector<Student_info>::size_type i = 0; i != students.size(); i++) {
-        cout << students[i].name ;
-        //<< string(' ', max_len + 1 - students[i].name.size());
+        cout << students[i].name << string(max_len + 1 - students[i].name.size(), ' ');
 
         //calculating the grade part
         try {

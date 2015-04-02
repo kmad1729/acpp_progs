@@ -55,7 +55,6 @@ istream& read_hw(istream& in_stream, vector<double>& hw)
 istream& read(istream& in_stream, Student_info& s)
 {
     in_stream >> s.name >> s.midterm >> s.final;
-    std::cout << "name is " << s.name << std::endl;
     read_hw(in_stream, s.homeworks);
     return in_stream;
 }
