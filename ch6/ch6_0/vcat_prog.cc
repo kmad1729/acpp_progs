@@ -24,7 +24,9 @@ int main()
     cout << "(" << bottom_string << ")" << endl;
 
     cout << "after vcat -->" << endl;
-    print_str_vector(split(top_string));
+    print_str_vector(vcat(splitlines(top_string), splitlines(bottom_string)));
+
+    cout << endl;
 
     return 0;
 }
