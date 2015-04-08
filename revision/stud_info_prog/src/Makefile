@@ -1,6 +1,10 @@
 IDIR = ../include
 CC = g++
-CFLAGS= -stdlib=libstdc++ -I $(IDIR)
+CCFLAGS= -I $(IDIR)
+
+ifeq ($(shell uname -s), Darwin)
+    CCFLAGS += -stdlib=libstdc++
+endif
 
 _DEPS= median.h print_utils.h student_info.h
 DEPS= $(patsubst %.h,$(IDIR)/%.h,$(_DEPS))
@@ -11,10 +15,10 @@ _OBJ = test_student_info.o print_utils.o median.o student_info.o
 OBJ= $(patsubst %.o,$(ODIR)/%.o,$(_OBJ))
 
 $(ODIR)/%.o: %.cc $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) -c -o $@ $< $(CCFLAGS)
 
 test_student_info: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CCFLAGS)
 
 .PHONY: clean
 
