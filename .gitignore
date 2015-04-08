@@ -3,6 +3,7 @@
 !*.h
 !*/
 !*.txt
+!Makefile
 
 *.exe
 *.swp
