@@ -17,6 +17,7 @@ OBJ= $(patsubst %.o,$(ODIR)/%.o,$(_OBJ))
 DEPS= string_utils.h
 
 $(ODIR)/%.o: %.cc $(DEPS)
+	@mkdir -p $(@D)
 	$(CC) -c -o $@ $< $(CC_FLAGS)
 vcat_prog: $(OBJ)
 	$(CC) -o $@ $^ $(CC_FLAGS)
