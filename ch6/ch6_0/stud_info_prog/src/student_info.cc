@@ -1,5 +1,4 @@
 #include "student_info.h"
-#include "median.h"
 #include <vector>
 #include <string>
 #include <stdexcept>
@@ -11,25 +10,6 @@ using std::domain_error;
 using std::istream;
 using std::cin;
 
-
-double grade(const Student_info& s) 
-{
-    return grade(s.midterm, s.final, s.homeworks);
-}
-
-
-double grade(double midt, double final, const std::vector<double>& hw) 
-{
-    if(hw.size() == 0)
-        throw domain_error("homework vector cannot be empty");
-    return grade(midt, final, median(hw));
-}
-
-
-double grade(double midt, double final, double hw)
-{
-    return 0.2 * midt + 0.4 * final + 0.4 * hw;
-}
 
 istream& read_hw(istream& in_stream, vector<double>& hw)
 {

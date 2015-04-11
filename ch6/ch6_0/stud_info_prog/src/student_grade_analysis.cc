@@ -1,5 +1,6 @@
 #include <iostream>
 #include "student_info.h"
+#include "grades.h"
 #include <vector>
 #include <string>
 
@@ -27,10 +28,12 @@ int main()
     if(did.empty()) {
         cout << "no student finished all homework!" << endl;
         return 1;
-    } else {
+    } 
+    if (didnt.empty()) {
         cout << "all students finished homework!" << endl;
         return 1;
     }
 
+    write_analysis(cout, "median", median_analysis, did, didnt);
     return 0;
 }
