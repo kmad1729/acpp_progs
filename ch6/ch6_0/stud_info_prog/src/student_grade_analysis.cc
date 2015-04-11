@@ -34,6 +34,8 @@ int main()
         return 1;
     }
 
-    write_analysis(cout, "median", median_analysis, did, didnt);
+    write_analysis(cout, "median analaysis", median_analysis, did, didnt);
+    
+    write_analysis(cout, "average analysis", average_analysis, did, didnt);
     return 0;
 }

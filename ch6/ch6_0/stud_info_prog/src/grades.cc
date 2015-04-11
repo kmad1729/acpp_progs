@@ -49,10 +49,27 @@ double grade_aux(const Student_info& s)
     }
 }
 
-double median_analysis(const std::vector<Student_info>& v)
+double median_analysis(const vector<Student_info>& v)
 {
     vector<double> grades;
     transform(v.begin(), v.end(), back_inserter(grades), grade_aux);
+    return median(grades);
+}
+
+double average(const vector<double>& v)
+{
+    return accumulate(v.begin(), v.end(), 0.0) / v.size();
+}
+
+double average_grade(const Student_info& s)
+{
+    return grade(s.midterm, s.final, average(s.homeworks));
+}
+
+double average_analysis(const vector<Student_info>& v)
+{
+    vector<double> grades;
+    transform(v.begin(), v.end(), back_inserter(grades), average_grade);
     return median(grades);
 }
 
@@ -62,6 +79,6 @@ void write_analysis(ostream& os, const string& func_name,
         const vector<Student_info>& did, 
         const vector<Student_info>& didnt)
 {
-    os << func_name << "(did): " << analysis_fun(did) << endl
-        << func_name << "(didnt): " << analysis_fun(didnt) << endl;
+    os << func_name << " median(did): " << analysis_fun(did)
+        << " median(didnt): " << analysis_fun(didnt) << endl;
 }

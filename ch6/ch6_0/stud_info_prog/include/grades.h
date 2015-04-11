@@ -13,6 +13,7 @@ double grade(const Student_info&);
  * median_analysis: returns the median of all homoworks of vector of students
  */
 double median_analysis(const std::vector<Student_info>&);
+double average_analysis(const std::vector<Student_info>&);
 
 void write_analysis(std::ostream&, const std::string&, 
         double analysis_func(const std::vector<Student_info>&),
