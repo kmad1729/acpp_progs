@@ -101,3 +101,35 @@ void write_analysis(ostream& os, const string& func_name,
     os << func_name << endl << "median(did): " << analysis_fun(did)
         << " median(didnt): " << analysis_fun(didnt) << endl;
 }
+
+
+
+/*
+ *  partition the students vector based on pass or fail grade
+ *
+ */
+
+bool fgrade(const Student_info& s)
+{
+    return grade(s) < 60;
+}
+
+bool pgrade(const Student_info& s)
+{
+    return !fgrade(s);
+}
+
+vector<Student_info> extract_fails(vector<Student_info>& students)
+{
+    vector<Student_info> fails;
+    remove_copy_if(students.begin(), students.end(), back_inserter(fails), pgrade);
+    students.erase(remove_if(students.begin(), students.end(), fgrade), students.end());
+    return fails;
+}
+
+
+
+
+
+
+

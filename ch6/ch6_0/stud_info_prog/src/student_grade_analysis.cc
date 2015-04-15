@@ -9,15 +9,26 @@ using std::cout;
 using std::endl;
 using std::vector;
 using std::string;
+using std::max;
 
+void print_vector_student_info(const vector<Student_info>& v, string::size_type maxlen)
+{
+    for(vector<Student_info>::size_type i = 0; i < v.size(); i++) {
+        cout << v[i].name << string(maxlen + 1 - v[i].name.size(), ' ') << grade(v[i]) << endl;
+    }
+}
 
 int main()
 {
-    vector<Student_info> did,didnt;
+    cout << string(40, '*') << endl;
+    vector<Student_info> did,didnt, students;
 
     Student_info record;
+    string::size_type maxlen = 0;
 
     while(read_stud_info(cin, record)) {
+        students.push_back(record);
+        maxlen = max(maxlen, record.name.size());
         if(did_all_hw(record)) {
             did.push_back(record);
         } else {
@@ -39,5 +50,20 @@ int main()
     write_analysis(cout, "average analysis", average_analysis, did, didnt);
     
     write_analysis(cout, "optimistic analysis", optimistic_median_analysis, did, didnt);
+
+    cout << string(40, '*') << endl;
+    cout << "Pass fail analysis --->" << endl;
+
+    vector<Student_info> passed(students);
+    vector<Student_info> failed = extract_fails(passed);
+
+    cout << "Passed students -->" << endl;
+    print_vector_student_info(passed, maxlen);
+
+    cout << "Failed students -->" << endl;
+    print_vector_student_info(failed, maxlen);
+    
+
+    cout << string(40, '*') << endl;
     return 0;
 }
