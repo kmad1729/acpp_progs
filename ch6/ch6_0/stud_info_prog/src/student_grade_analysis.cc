@@ -18,6 +18,20 @@ void print_vector_student_info(const vector<Student_info>& v, string::size_type 
     }
 }
 
+void print_extract_fails(vector<Student_info> passed, vector<Student_info> extract_failed_func(vector<Student_info>&), string::size_type maxlen)
+{
+    cout << string(40, '*') << endl;
+    cout << "Pass fail analysis --->" << endl;
+    vector<Student_info> failed = extract_failed_func(passed);
+
+    cout << "Passed students -->" << endl;
+    print_vector_student_info(passed, maxlen);
+
+    cout << "Failed students -->" << endl;
+    print_vector_student_info(failed, maxlen);
+    cout << string(40, '*') << endl;
+}
+
 int main()
 {
     cout << string(40, '*') << endl;
@@ -51,19 +65,14 @@ int main()
     
     write_analysis(cout, "optimistic analysis", optimistic_median_analysis, did, didnt);
 
-    cout << string(40, '*') << endl;
-    cout << "Pass fail analysis --->" << endl;
-
-    vector<Student_info> passed(students);
-    vector<Student_info> failed = extract_fails(passed);
-
-    cout << "Passed students -->" << endl;
-    print_vector_student_info(passed, maxlen);
-
-    cout << "Failed students -->" << endl;
-    print_vector_student_info(failed, maxlen);
-    
 
     cout << string(40, '*') << endl;
+    cout << "Double pass solution --->" << endl;
+    print_extract_fails(students, double_pass_extract_fails, maxlen);
+
+    cout << "Single pass solution --->" << endl;
+    print_extract_fails(students, single_pass_extract_fails, maxlen);
+
+
     return 0;
 }

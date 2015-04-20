@@ -119,7 +119,7 @@ bool pgrade(const Student_info& s)
     return !fgrade(s);
 }
 
-vector<Student_info> extract_fails(vector<Student_info>& students)
+vector<Student_info> double_pass_extract_fails(vector<Student_info>& students)
 {
     vector<Student_info> fails;
     remove_copy_if(students.begin(), students.end(), back_inserter(fails), pgrade);
@@ -128,7 +128,13 @@ vector<Student_info> extract_fails(vector<Student_info>& students)
 }
 
 
-
+vector<Student_info> single_pass_extract_fails(vector<Student_info>& students)
+{
+    vector<Student_info>::iterator first_failed_student = stable_partition(students.begin(), students.end(), pgrade);
+    vector<Student_info> fails(first_failed_student, students.end());
+    students.erase(first_failed_student, students.end());
+    return fails;
+}
 
 
 

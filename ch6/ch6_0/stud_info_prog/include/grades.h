@@ -28,6 +28,8 @@ void write_analysis(std::ostream&, const std::string&,
         const std::vector<Student_info>&, const std::vector<Student_info>&);
 
 bool pgrade(const Student_info&);
-std::vector<Student_info> extract_fails(std::vector<Student_info>&);
+std::vector<Student_info> double_pass_extract_fails(std::vector<Student_info>&);
+
+std::vector<Student_info> single_pass_extract_fails(std::vector<Student_info>&);
 
 #endif

@@ -1,28 +1,30 @@
-IDIR=../include
 CC=g++
-CC_FLAGS= -I$(IDIR)
+I_DIR=../include
+CC_Flags= -Wall -I$(I_DIR)
 
 ifeq ($(shell uname -s),Darwin)
-		CC_FLAGS += -stdlib=libstdc++
+		$(CC_Flags) += -stdlib=libstdc++
 endif
 
-_DEPS = median.h student_info.h grades.h
-DEPS= $(patsubst %.h,$(IDIR)/%.h,$(_DEPS))
 
-ODIR=obj
 
-_OBJ = median.o student_info.o student_grade_analysis.o grades.o
-OBJ=$(patsubst %.o,$(ODIR)/%.o,$(_OBJ))
+_DEPS= grades.h median.h student_info.h
+DEPS=$(patsubst %.h,$(I_DIR)/%.h,$(_DEPS))
 
-$(ODIR)/%.o : %.cc $(DEPS)
+O_DIR=obj
+
+_OBJS = grades.o median.o student_info.o student_grade_analysis.o
+OBJS=$(patsubst %.o,$(O_DIR)/%.o,$(_OBJS))
+
+$(O_DIR)/%.o: %.cc $(DEPS)
 	@mkdir -p $(@D)
-	$(CC) -c -o $@ $< $(CC_FLAGS)
+	$(CC) -c -o $@ $< $(CC_Flags)
 
-student_grade_analysis: $(OBJ)
-	$(CC) -o $@ $^ $(CC_FLAGS)
+student_grade_analysis: $(OBJS)
+	$(CC) -o $@ $^ $(CC_Flags)
+
 
 .PHONY: clean
-	
-clean:
-	rm -f $(OBJ) student_grade_analysis
 
+clean:
+	rm -rf $(OBJS) student_grade_analysis $(O_DIR)
