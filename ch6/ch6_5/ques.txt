@@ -1,0 +1,1 @@
+Write an analysis function to call optimistic_median.

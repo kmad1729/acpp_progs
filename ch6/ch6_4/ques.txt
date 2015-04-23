@@ -1,0 +1,4 @@
+Correct the program to copy from u into v in ex6_3.
+Write 2 possible ways and describe the relative advantages and disadvantages of each approach.
+
+
