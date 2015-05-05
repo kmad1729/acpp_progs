@@ -17,4 +17,5 @@ int main()
     for(vector<string>::const_iterator i = v.begin(); i != v.end(); i++) {
         cout << *i << endl;
     }
+    print_vec(v);
 }

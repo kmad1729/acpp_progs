@@ -10,6 +10,7 @@ using std::vector;
 using std::cout;
 using std::isspace;
 using std::find_if;
+using std::endl;
 
 
 bool is_space(char c)
