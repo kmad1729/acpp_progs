@@ -11,20 +11,18 @@ using std::copy;
 using std::string;
 
 
-//TODO fix this function -->
-template <class T>
-void print_vec(const vector<T>& v)
+template <typename T>
+void print_vec(const std::vector<T>& v)
 {
     typedef typename vector<T>::size_type vec_sz;
-    ostream_iterator<T> os_iter(cout, ", ");
-    copy(v.begin(), v.end(), os_iter);
-    cout << endl;
+    for(vec_sz i = 0; i != v.size(); i++) {
+        if (i == 0) cout << v[i];
+        else cout << ", " << v[i];
+    }
+    std::cout << std::endl;
 }
 
-void print_vec(const vector<string>& v)
-{
-    typedef vector<string>::size_type vec_sz;
-    ostream_iterator<string> os_iter(cout, ", ");
-    copy(v.begin(), v.end(), os_iter);
-    cout << endl;
-}
+template void print_vec(const vector<string>&);
+template void print_vec(const vector<int>&);
+template void print_vec(const vector<double>&);
+

@@ -1,38 +1,30 @@
 CC=g++
-LIB_DIR=../../lib
-LIB_NAME=acpp_utils
 IDIR=../../include
+ODIR=obj
 SDIR=src
+LIB=acpp_utils
+LDIR=../../lib
 
-CCFLAGS= -Wall -I$(IDIR) 
+CC_FLAGS= -Wall -I$(IDIR)
+
 
 ifeq ($(shell uname -s), Darwin)
-		CCFLAGS += -stdlib=libstdc++
+		CC_FLAGS += -stdlib=libstdc++
 endif
-
 
 all: word_freq xref_words_lines
 
-
-ODIR=obj
-
-_OBJ= word_freq.o xref_words_lines.o
-OBJ = $(patsubst %.o,$(ODIR)/%.o,$(_OBJ))
-
-
-$(ODIR)/%.o: $(SDIR)/%.cc 
+$(ODIR)/%.o: $(SDIR)/%.cc
 	mkdir -p $(ODIR)
-	$(CC) -c -o $@ $< $(CCFLAGS)
+	$(CC) -c -o $@ $< $(CC_FLAGS)
 
 word_freq: $(ODIR)/word_freq.o
-	$(CC) -o $@ $^ $(CCFLAGS)
+	$(CC) -o $@ $^ $(CC_FLAGS)
 
-xref_words_lines: $(ODIR)/xref_words_lines.o 
-	$(CC) -o $@ $^ $(CCFLAGS)  -L$(LIB_DIR) -l$(LIB_NAME) 
-
-
+xref_words_lines: $(ODIR)/xref_words_lines.o
+	$(CC) -o $@ $^ $(CC_FLAGS) -L$(LDIR) -l$(LIB)
 
 .PHONY: clean
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(ODIR) word_freq xref_words_lines

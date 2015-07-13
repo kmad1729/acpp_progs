@@ -4,13 +4,14 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <iterator>
+#include <algorithm>
 
 std::vector<std::string> split(const std::string&);
 
-void print_vec(const std::vector<std::string>&);
 
-template <class T>
+
+template <typename T>
 void print_vec(const std::vector<T>&);
-
 
 #endif
