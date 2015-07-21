@@ -1,0 +1,5 @@
+Extend the program from 7.2/124 to produce its output sorted by occurence count. 
+i.e. the output should group all the words that occur once, followed by those
+that occur twice and so on.
+
+7.2 --> count words program
