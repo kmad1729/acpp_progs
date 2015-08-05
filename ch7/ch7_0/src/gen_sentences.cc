@@ -40,7 +40,6 @@ int nrand(int n)
     const int bucket_count = RAND_MAX / n;
     int r;
     do {
-        srand(time(0));
         int rand_num = rand();
         cout << "Bc " << bucket_count << " rand_num = " << rand_num << endl;
         r = rand_num / bucket_count;
@@ -78,6 +77,7 @@ void gen_sentence_aux(const Grammar& g, const string& word, vector<string>& ret)
 
         const Rule_collection& rc = it -> second;
 
+        srand(time(NULL));
         const Rule& r = rc[nrand(rc.size())];
         
         for(Rule::const_iterator i = r.begin(); i != r.end(); i++) {
