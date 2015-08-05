@@ -1,0 +1,29 @@
+Extend the program from 7.2/124 to produce its output sorted by occurence count. 
+i.e. the output should group all the words that occur once, followed by those
+that occur twice and so on.
+
+7.2 --> count words program
+
+Notes:
+Test cases are in "test_cases.txt"
+
+Expected output:
+after      1
+before     1
+cliff      1
+command    1
+config     1
+hang       1
+hangs      1
+scripts    1
+sorted     1
+sorter     1
+text       1
+trade      1
+tuesday    1
+enthusiasm 2
+foo        2
+hanger     2
+scipt      2
+bash       3
+script     3
