@@ -43,5 +43,15 @@ int main()
             max_word = words[i];
     }
 
+
+    cout << "words --> " << endl;
+    cout << "{";
+    for(vector<string>::size_type i = 0; i < words.size(); i++) {
+        if(i == 0)
+            cout << words[i];
+        else 
+            cout << ", " << words[i];
+    }
+    cout << "}" << endl;
     cout << "max word (" << max_word << ") of length = " << max_len << " my max = " << my_max_len << endl;
 }
