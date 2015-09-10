@@ -14,7 +14,7 @@ using std::string;
 using std::find;
 
 template <class In, class X>
-In my_find(In beg, In end, X tgt)
+In my_find(In beg, In end, const X& tgt)
 {
     while(beg != end && *beg != tgt)
         beg++;
