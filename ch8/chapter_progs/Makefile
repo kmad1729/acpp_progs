@@ -5,7 +5,7 @@ ifeq ($(shell uname -s),Darwin)
 	CC_FLAGS += -stdlib=libstdc++
 endif
 
-ALL = seq_write_only  template_max  template_median string_reverse seq_read_only seq_read_write reversible
+ALL = seq_write_only  template_max  template_median string_reverse seq_read_only seq_read_write reversible partial_reverse
 
 all: $(ALL)
 
@@ -30,6 +30,9 @@ seq_read_write: seq_read_write.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 reversible: reversible.cc
+	$(CC) -o $@ $< $(CC_FLAGS)
+
+partial_reverse: partial_reverse.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 clean:
