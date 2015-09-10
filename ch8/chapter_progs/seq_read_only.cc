@@ -13,6 +13,14 @@ using std::vector;
 using std::string;
 using std::find;
 
+template <class In, class X>
+In my_find(In beg, In end, X tgt)
+{
+    while(beg != end && *beg != tgt)
+        beg++;
+    return beg;
+}
+
 
 int main()
 {
@@ -36,6 +44,8 @@ int main()
     tgts.push_back("ironman");
     tgts.push_back("thor");
 
+    string delim = string(10, '*');
+    cout << "STL find " << endl;
     for(iter it = tgts.begin(); it != tgts.end(); it++) {
         cout << "looking for " << *it;
         if(find(names.begin(), names.end(), *it) != names.end()) {
@@ -45,5 +55,18 @@ int main()
         }
         cout << endl;
     }
+    cout << delim << endl;
+
+    cout << "my find " << endl;
+    for(iter it = tgts.begin(); it != tgts.end(); it++) {
+        cout << "looking for " << *it;
+        if(my_find(names.begin(), names.end(), *it) != names.end()) {
+            cout << ": Found!! :)";
+        } else {
+            cout << ": couldn't find :(";
+        }
+        cout << endl;
+    }
+    cout << delim << endl;
 
 }
