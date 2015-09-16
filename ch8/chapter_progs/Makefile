@@ -5,7 +5,7 @@ ifeq ($(shell uname -s),Darwin)
 	CC_FLAGS += -stdlib=libstdc++
 endif
 
-ALL = seq_write_only  template_max  template_median string_reverse seq_read_only seq_read_write reversible partial_reverse random_access
+ALL = seq_write_only  template_max  template_median string_reverse seq_read_only seq_read_write reversible partial_reverse random_access inp_out_iterators
 
 all: $(ALL)
 
@@ -36,6 +36,9 @@ partial_reverse: partial_reverse.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 random_access: random_access.cc
+	$(CC) -o $@ $< $(CC_FLAGS)
+
+inp_out_iterators: inp_out_iterators.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 clean:
