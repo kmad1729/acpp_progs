@@ -78,5 +78,12 @@ int main()
     write_analysis(cout, "median analysis", median_analysis,
             did, didnt);
     cout << delim; 
+    write_analysis(cout, "average analysis", average_analysis,
+            did, didnt);
+
+    cout << delim;
+
+
     return 0;
+
 }

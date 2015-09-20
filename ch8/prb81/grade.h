@@ -9,5 +9,8 @@ double grade(double, double, const std::vector<double>&);
 double grade_aux(const Student_info&);
 double median_analysis(const std::vector<Student_info>&);
 
+double average(const std::vector<double>&);
+double average_analysis(const std::vector<Student_info>&);
+
 
 #endif

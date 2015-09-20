@@ -1,6 +1,7 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
+#include <numeric>
 
 #include "median.h"
 #include "student_info.h"
@@ -9,6 +10,7 @@
 using std::vector;
 using std::domain_error;
 using std::transform;
+using std::accumulate;
 
 
 
@@ -49,6 +51,20 @@ double median_analysis(const vector<Student_info>& v)
 {
     vector<double> grades;
     transform(v.begin(), v.end(), back_inserter(grades), grade_aux);
+    return median(grades);
+}
+
+
+double average(const Student_info& s)
+{
+    double av = accumulate(s.homework.begin(), s.homework.end(), 0.0) / s.homework.size();
+    return grade(s.midterm, s.final, av);
+}
+
+double average_analysis(const vector<Student_info>& v)
+{
+    vector<double> grades;
+    transform(v.begin(), v.end(), back_inserter(grades), average);
     return median(grades);
 }
 
