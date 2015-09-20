@@ -1,11 +1,14 @@
 #include <vector>
 #include <stdexcept>
+#include <algorithm>
 
 #include "median.h"
 #include "student_info.h"
 
+
 using std::vector;
 using std::domain_error;
+using std::transform;
 
 
 
@@ -26,5 +29,26 @@ double grade(double midterm, double final, const vector<double>& v)
 double  grade(const Student_info& s)
 {
     return grade(s.midterm, s.final, s.homework);
+}
+
+
+//function calculates the grade based on midterm, final
+//and homework
+//if homework vector is empty, calculate the grade assuming
+// 0 homework grade
+double grade_aux(const Student_info& s)
+{
+    try {
+        return grade(s);
+    } catch (domain_error) {
+        return grade(s.midterm, s.final, 0.0);
+    }
+}
+
+double median_analysis(const vector<Student_info>& v)
+{
+    vector<double> grades;
+    transform(v.begin(), v.end(), back_inserter(grades), grade_aux);
+    return median(grades);
 }
 
