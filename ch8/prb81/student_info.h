@@ -18,5 +18,7 @@ std::istream& read(std::istream&, Student_info&);
 
 bool compare(const Student_info&, const Student_info&);
 
+bool did_all_hw(const Student_info&);
+
 
 #endif
