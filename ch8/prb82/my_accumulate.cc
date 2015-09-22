@@ -5,6 +5,16 @@
 #include "my_include.h"
 
 
+template <class For, class T>
+T my_accumulate(For b, For e, T init_value)
+{
+    T result = init_value;
+    while(b != e)
+        result += *b++;
+    return result;
+}
+
+
 int main()
 {
     vector<int> v;
@@ -16,6 +26,13 @@ int main()
     //adding numbers from 0 to 100
     int total_ = accumulate(v.begin(), v.end(), 0);
     int total_squares_ = accumulate(v_squares.begin(), v_squares.end(), 0);
+    cout << "sum of numbers from " << from << " to " << to << " = " << total_ << endl;
+    cout << "sum of squares of numbers from " << from << " to " << to << " = " << total_squares_ << endl;
+
+
+    cout << "MY template" << endl;
+    total_ = my_accumulate(v.begin(), v.end(), 0);
+    total_squares_ = my_accumulate(v_squares.begin(), v_squares.end(), 0);
     cout << "sum of numbers from " << from << " to " << to << " = " << total_ << endl;
     cout << "sum of squares of numbers from " << from << " to " << to << " = " << total_squares_ << endl;
 }
