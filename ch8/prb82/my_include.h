@@ -8,6 +8,7 @@
 #include <cstddef>
 #include <cctype>
 #include <iterator>
+#include <numeric>
 
 
 using std::cin;
@@ -24,6 +25,8 @@ using std::find_if;
 using std::copy;
 
 using std::isspace;
+
+using std::accumulate;
 
 void print_vector_to_out(const vector<string>&);
 
