@@ -9,6 +9,7 @@
 #include <cctype>
 #include <iterator>
 #include <numeric>
+#include <stdexcept>
 
 
 using std::cin;
@@ -16,6 +17,8 @@ using std::cout;
 using std::endl;
 using std::back_inserter;
 using std::ostream_iterator;
+using std::isalpha;
+using std::domain_error;
 
 using std::string;
 using std::vector;
