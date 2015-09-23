@@ -7,8 +7,12 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 
-all: my_accumulate
+all: my_accumulate my_transform
 
 my_accumulate: my_accumulate.cc
 	$(CC) -o $@ $^ $(CC_Flags)
+
+my_transform: my_transform.cc
+	$(CC) -o $@ $^ $(CC_Flags)
+
 
