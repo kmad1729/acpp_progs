@@ -9,13 +9,20 @@ class Student_info {
     public:
         std::istream& read(std::istream&);
         std::string name() const {return n;}
-        bool valid() const {return !homework.empty()};
-        double grade();
+        bool valid() const {return !homework.empty();};
+        double grade() const;
+        //default constructor
+        Student_info();
+        //constructor with istream
+        Student_info(std::istream&);
     private:
         std::string n;
         double midterm, final;
         std::vector<double> homework;
 };
+
+
+
 
 bool compare(const Student_info&, const Student_info&);
 

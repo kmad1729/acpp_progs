@@ -5,7 +5,19 @@ using std::string;
 using std::istream;
 using std::vector;
 
-istream& read_hw(istream& in, vector<double> hw)
+
+Student_info::Student_info(istream& in)
+{
+    read(in);
+}
+
+//default constructor initialized midterm and final
+//by using constructor initializers
+//rest of the values are class types so they have their own
+//initializers
+Student_info::Student_info(): midterm(0), final(0) { };
+
+istream& read_hw(istream& in, vector<double>& hw)
 {
     if(in) {
         hw.clear();
@@ -15,6 +27,7 @@ istream& read_hw(istream& in, vector<double> hw)
 
         in.clear();
     }
+    return in;
 }
 
 istream& Student_info::read(istream& in)
@@ -24,7 +37,7 @@ istream& Student_info::read(istream& in)
     return in;
 }
 
-double grade() const {
+double Student_info::grade() const {
     return ::grade(midterm, final, homework);
 }
 
