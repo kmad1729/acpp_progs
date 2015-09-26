@@ -26,7 +26,7 @@ int get_count_of_word(const string& sentence, const string& word)
             && (isspace(i[word.size()]) || (i + word.size() == sentence.end())
         )) {
             result++;
-            cout << "found at index " << i - sentence.begin() << endl;
+            cout << "word \"" << word << "\" " << "found at index " << i - sentence.begin() << endl;
         }
         i = my_search(i + word.size(), sentence.end(), word.begin(), word.end());
     }
@@ -37,8 +37,11 @@ int main()
 {
     string word = "the";
     string line;
-    cout << "please enter the input line -->" << endl;
     getline(cin, line);
+
+    cout << "input sentence --> " << endl;
+    cout << "\"" << line << "\"" << endl;
+    cout << delim;
 
     int result = get_count_of_word(line, word);
     cout << "count of the word \"" << word << "\" in the sentence = " << result << endl;

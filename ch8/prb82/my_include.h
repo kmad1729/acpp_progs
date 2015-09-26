@@ -33,7 +33,7 @@ using std::isspace;
 using std::accumulate;
 
 
-string delim = string(20, '*') + '\n';
+#define delim (string(20, '*') + '\n')
 
 template <class T>
 void print_vector_to_out(const vector<T>& v)
