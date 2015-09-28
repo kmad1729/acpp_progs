@@ -1,0 +1,15 @@
+
+prb82:
+    d_remove_copy_if
+    i_remove_copy
+    k_partition
+
+prb84:
+    implement swap
+
+prb85:
+    gen_sentence 
+        
+    xref
+
+
