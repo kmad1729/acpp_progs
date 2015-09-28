@@ -27,6 +27,7 @@ using std::max;
 using std::search;
 using std::find_if;
 using std::copy;
+using std::remove;
 
 using std::isspace;
 
