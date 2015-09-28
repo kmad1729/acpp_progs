@@ -11,7 +11,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 
-_ALL=a_my_equal b_my_find c_my_copy d_my_remove e_my_transform f_my_accumulate g_my_search
+_ALL=a_my_equal b_my_find c_my_copy e_my_transform f_my_accumulate g_my_search j_my_remove 
 
 
 all: $(_ALL)
@@ -26,9 +26,6 @@ b_my_find: b_my_find.cc
 c_my_copy: c_my_copy.cc utils.cc
 	$(CC) -o $@ $^ $(CC_Flags) 
 
-d_my_remove: d_my_remove.cc
-	$(CC) -o $@ $^ $(CC_Flags) 
-
 e_my_transform: e_my_transform.cc
 	$(CC) -o $@ $^ $(CC_Flags)
 
@@ -37,6 +34,10 @@ f_my_accumulate: f_my_accumulate.cc
 
 g_my_search: g_my_search.cc
 	$(CC) -o $@ $^ $(CC_Flags)
+
+j_my_remove: j_my_remove.cc
+	$(CC) -o $@ $^ $(CC_Flags) 
+
 
 
 

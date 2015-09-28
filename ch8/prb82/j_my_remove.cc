@@ -55,6 +55,9 @@ void remove_analyze(string s, char char_to_remove_using_stl_remove, char char_to
 
 int main()
 {
+    cout << delim;
+    cout << "creates a number string and removes digits from the string" << endl
+        << "using the \"remove\" function" << endl;
     string s;
     for(char c2 = '9'; c2 >= '0'; c2--) {
         if(c2 > '5') 
