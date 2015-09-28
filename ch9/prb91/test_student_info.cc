@@ -16,7 +16,6 @@ using std::max;
 using std::sort;
 using std::setprecision;
 
-//testing if this change shows up in github contributions
 
 int main()
 {

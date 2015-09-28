@@ -1,0 +1,4 @@
+prb91:
+    calculate the final grade when reading the student's the record
+    and stores in the object
+    grade function uses this precomputed value
