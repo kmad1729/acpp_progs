@@ -28,6 +28,7 @@ using std::search;
 using std::find_if;
 using std::copy;
 using std::remove;
+using std::remove_copy_if;
 
 using std::isspace;
 
@@ -36,13 +37,14 @@ using std::accumulate;
 
 #define delim (string(20, '*') + '\n')
 
+
 template <class T>
-void print_vector_to_out(const vector<T>& v)
-{
+void print_vector_to_out(const vector<T>& v) {
     copy(v.begin(), v.end(), ostream_iterator<T>(cout, " "));
     cout << endl;
 }
 
-void print_vector_to_out(const vector<string>&);
+//void print_vector_to_out(const vector<int>&);
+//void print_vector_to_out(const vector<string>&);
 
 #endif
