@@ -30,6 +30,7 @@ using std::copy;
 using std::remove;
 using std::remove_copy_if;
 using std::remove_copy;
+using std::partition;
 
 using std::isspace;
 
@@ -45,7 +46,5 @@ void print_vector_to_out(const vector<T>& v) {
     cout << endl;
 }
 
-//void print_vector_to_out(const vector<int>&);
-//void print_vector_to_out(const vector<string>&);
 
 #endif

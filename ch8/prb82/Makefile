@@ -11,7 +11,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 
-_ALL=a_my_equal b_my_find c_my_copy d_remove_copy_if e_my_transform f_my_accumulate g_my_search i_remove_copy j_my_remove 
+_ALL=a_my_equal b_my_find c_my_copy d_remove_copy_if e_my_transform f_my_accumulate g_my_search i_remove_copy j_my_remove k_partition
 
 
 all: $(_ALL)
@@ -42,6 +42,9 @@ i_remove_copy: i_remove_copy.cc
 	$(CC) -o $@ $^ $(CC_Flags)
 
 j_my_remove: j_my_remove.cc
+	$(CC) -o $@ $^ $(CC_Flags) 
+
+k_partition: k_partition.cc
 	$(CC) -o $@ $^ $(CC_Flags) 
 
 
