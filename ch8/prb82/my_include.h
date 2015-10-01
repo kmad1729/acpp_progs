@@ -29,6 +29,7 @@ using std::find_if;
 using std::copy;
 using std::remove;
 using std::remove_copy_if;
+using std::remove_copy;
 
 using std::isspace;
 
