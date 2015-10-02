@@ -56,18 +56,18 @@ void print_even_partition_analysis(vector<int> v)
     vector<int>::iterator i = partition(v_stl.begin(), v_stl.end(), isEven);
     cout << delim;
 
-    cout << "even numbers in v (stl)" << endl;
+    cout << "even numbers in v (stl)" << endl << "(";
     copy(v_stl.begin(), i, ostream_iterator<int>(cout, " "));
-    cout << endl;
+    cout << ")" << endl;
     cout << "odd numbers in v (stl)" << endl << "(";
     copy(i, v_stl.end(), ostream_iterator<int>(cout, " "));
     cout << ")" << endl;
 
     cout << delim;
     i = my_partition(v.begin(), v.end(), isEven);
-    cout << "even numbers in v (my)" << endl;
+    cout << "even numbers in v (my)" << endl << "(";
     copy(v.begin(), i, ostream_iterator<int>(cout, " "));
-    cout << endl;
+    cout << ")" << endl;
     cout << "odd numbers in v (my)" << endl << "(" ;
     copy(i, v.end(), ostream_iterator<int>(cout, " "));
     cout << ")" << endl;
