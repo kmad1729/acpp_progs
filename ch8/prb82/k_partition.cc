@@ -6,14 +6,30 @@
 template <class Bidir, class Pred>
 Bidir my_partition(Bidir b, Bidir e, Pred p)
 {
-    while(b < e) {
-        if(!p(*b)) {
-            cout << *b << " is not even " << endl;
+    while(b != e) {
+        //skipping all the elements from the beginning
+        //for which the predicate is true
+        //if we reach the end, just return it i.e nothing to partition
+        while(p(*b)) {
+            b++;
+            if(b == e) return b;
+        }
+        //there is at least one element which does not return
+        //true on the predicate
+        e--;
+        
+        //skipp all the elements from the end
+        //for which the predicate is false
+        //break when the predicate is true
+        while(!p(*e)) {
+            if(b == e) return b;
             e--;
-            swap(b, e);
-        } else b++;
+        }
+        //swap elements when predicate is false and true respectively
+        //advance the true pointer as the false pointer now points to a true element
+        swap(*b++, *e);
     }
-    return e;
+    return b;
 }
 
 
@@ -74,5 +90,9 @@ int main()
     vector<int> v3;
     for(int i = 1; i < 10; i+= 2) v3.push_back(i);
     print_even_partition_analysis(v3);
+    cout << delim;
+
+    vector<int> v4;
+    print_even_partition_analysis(v4);
     cout << delim;
 }

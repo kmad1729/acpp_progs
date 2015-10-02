@@ -31,6 +31,7 @@ using std::remove;
 using std::remove_copy_if;
 using std::remove_copy;
 using std::partition;
+using std::swap;
 
 using std::isspace;
 
