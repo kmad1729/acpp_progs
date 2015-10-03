@@ -5,15 +5,19 @@ ifeq ($(shell uname -s), Darwin)
 		CC_Flags += -stdlib=libstdc++
 endif
 
-_ALL=prog_student_info median.o student_info.o grade.o
+ODIR=obj
+_OBJS=$(ODIR)/median.o $(ODIR)/student_info.o $(ODIR)/grade.o
+
+_ALL=prog_student_info $(_OBJS)
 
 all: prog_student_info
 
-prog_student_info: prog_student_info.cc median.o student_info.o grade.o
+prog_student_info: prog_student_info.cc $(_OBJS)
 	$(CC) -o $@ $^ $(CC_Flags)
 
-%.o: %.cc
+$(ODIR)/%.o: %.cc
+	@mkdir -p $(ODIR)
 	$(CC) -o $@ -c $^ $(CC_Flags)
 
 clean:
-	rm -rf $(_ALL)
+	rm -rf $(_ALL) $(ODIR)
