@@ -1,46 +1,43 @@
 #include "student_info.h"
 #include "grade.h"
 
+using std::string;
 using std::vector;
 using std::istream;
-using std::string;
 
-
-istream& read_hw(istream& in, vector<double>& h)
+istream& read_hw(istream& is, vector<double>& hw)
 {
-    if(in) {
-        //make sure h is not populated with previous homework entries
-        h.clear();
-
+    if(is) {
+        hw.clear();
         double x;
-        while(in >> x) {
-            h.push_back(x);
-        }
 
-        //clearing hte istream flag
-        in.clear();
+        while(is >> x) 
+            hw.push_back(x);
+
+        is.clear();
+
     }
-    return in;
+    return is;
 }
 
-
-istream& Student_info::read(istream& in)
+istream& Student_info::read(istream& is)
 {
-    in >> n >> midterm >> final;
-    read_hw(in, homework);
-    return in;
+    is >> n >> midterm >> final;
+    read_hw(is, homework);
+    if(valid()) {
+        g = ::grade(midterm, final, homework);
+    }
+    return is;
 }
 
-
-double Student_info::grade() const {
-    return ::grade(midterm, final, homework);
+Student_info::Student_info(istream& is)
+{
+    read(is);
 }
 
-
-Student_info::Student_info() : midterm(0), final(0) { }
-Student_info::Student_info(istream& in) { read(in);}
-
-bool compare(const Student_info& s1, const Student_info& s2) 
+bool compare(const Student_info& s1, const Student_info& s2)
 {
     return s1.name() < s2.name();
 }
+
+
