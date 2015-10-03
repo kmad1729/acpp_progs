@@ -11,7 +11,7 @@ class Student_info {
         double grade() const {return g;}
         std::istream& read(std::istream&);
         bool valid() const {return !homework.empty();}
-        Student_info() {} ;
+        Student_info(): midterm(0), final(0) {} ;
         Student_info(std::istream&);
 
 

@@ -1,7 +1,4 @@
 
-prb82:
-    k_partition
-
 prb84:
     implement swap
 

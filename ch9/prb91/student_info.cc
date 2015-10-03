@@ -30,6 +30,7 @@ istream& Student_info::read(istream& is)
     return is;
 }
 
+
 Student_info::Student_info(istream& is)
 {
     read(is);
