@@ -31,12 +31,13 @@ void my_reverse(Bi first, Bi last)
         --last;
         if(first != last) {
             //here tmp and first both point to the same thing
-            Bi tmp = first;
+            //auto tmp = *first;
+            typename std::iterator_traits<Bi>::value_type tmp = *first;
             cout << " first = " << *first << " last = " << *last << endl;
             *first = *last;
             cout << " first = " << *first << " last = " << *last << endl;
-            cout << "tmp = " << *tmp << endl;
-            *last = *tmp;
+            cout << "tmp = " << tmp << endl;
+            *last = tmp;
             cout << " first = " << *first << " last = " << *last << endl;
 
             first++;
