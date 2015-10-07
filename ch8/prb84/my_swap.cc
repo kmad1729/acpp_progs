@@ -19,8 +19,11 @@ template <class Elem>
 void my_swap(Elem& x, Elem& y)
 {
     Elem tmp = x;
+    cout << "tmp " << tmp << " x = " << x << " y = " << y << endl;
     x = y;
+    cout << "tmp " << tmp << " x = " << x << " y = " << y << endl;
     y = tmp;
+    cout << "tmp " << tmp << " x = " << x << " y = " << y << endl;
 }
 
 //implementation of reverse function from stl
@@ -30,39 +33,11 @@ void my_reverse(Bi first, Bi last)
     while(first < last) {
         --last;
         if(first != last) {
-            //here tmp and first both point to the same thing
-            Bi tmp = first;
-            cout << "tmp = " << *tmp << " first = " << *first << " last = " << *last << endl;
-            *first = *last;
-            cout << "tmp = " << *tmp << " first = " << *first << " last = " << *last << endl;
-            *last = *tmp;
-
-            first++;
-
-            //my_swap(*first++, *last);
+            my_swap(*first++, *last);
         }
     }
 }
 
-
-//rotate a vector at point i
-//e.g rotate 1,2,3,4,5,6 
-//at 0 gives 1,2,3,4,5,6
-//at 1 gives 2,3,4,5,6,1
-//at 2 gives 3,4,5,6,1,2
-//at 3 gives 4,5,6,1,2,3
-//at 5 gives 6,1,2,3,4,5
-//at 6 gives 1,2,3,4,5,6
-//at 8 gives 1,2,3,4,5,6
-template <class T>
-void rotate_vector(vector<T>& v, int i)
-{
-    if( i > 0 && i < v.size()) {
-        my_reverse(v.begin(), v.begin() + i);
-        my_reverse(v.begin() + i, v.end());
-        my_reverse(v.begin(), v.end());
-    }
-}
 
 int main()
 {
@@ -79,15 +54,4 @@ int main()
     copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
     cout << delim;
 
-
-    /*
-    for(int j = 0; j < 10; j++) {
-        vector<int> v1(v.begin(), v.end());
-        cout << "vector rotated at " << j << " --> " << endl;
-        rotate_vector(v1, j);
-        copy(v1.begin(), v1.end(), ostream_iterator<int>(cout, " "));
-
-        cout << delim;
-    }
-    */
 }

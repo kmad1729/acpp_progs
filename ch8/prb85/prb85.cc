@@ -4,3 +4,18 @@
 //
 //list<string> and 
 //map<string, vector<int> >
+
+#include <map>
+#include <iostream>
+#include <vector>
+
+using std::map;
+using std::endl;
+using std::cout;
+using std::vector;
+
+
+
+int main()
+{
+}
