@@ -1,7 +1,4 @@
 
-prb84:
-    implement swap
-
 prb85:
     gen_sentence 
         
