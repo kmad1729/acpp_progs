@@ -2,3 +2,10 @@ Implement the swap function that we used in 8.2.5(148). (reverse implemenation)
 Why did we call swap rather than exchange the values of *beg and *end directly
 
 
+Ans --> 
+
+beg and end "point" to the elements in the vector. 
+We want to exchange the values that they "point to". To do this, we have 
+to dereference the iterators and exchange them. 
+This is done in "incorrect_swap_function.cc". It is easier to use swap function.
+
