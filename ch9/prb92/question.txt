@@ -1,0 +1,12 @@
+If we define the "name" function as a plain, non"const" member function,
+what other functions in our system must change and why?
+
+
+If we define "name" function as plain non "const" member function, the
+following functions need to change:
+
+compare:
+    because arguments to compare are "const Studenf_info" objects.
+
+
+
