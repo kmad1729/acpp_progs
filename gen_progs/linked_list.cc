@@ -1,7 +1,9 @@
 #include <iostream>
+#include <string>
 
 using std::cout;
 using std::endl;
+using std::string;
 
 struct LL_Node {
     int data;
@@ -43,22 +45,44 @@ class LinkedList {
                 curr_node = (curr_node -> next);
             }
         }
+
+
+        int length() {
+            int result = 0;
+
+            for(LL_Node *curr_node = head; curr_node != NULL;
+                    curr_node = (curr_node -> next))
+                result++;
+            return result;
+        }
 };
 
 
 int main()
 {
     LinkedList ll;
+
+    string delim = '\n' + string(20, '*') + '\n';
+
+    cout << "size of ll before = " << ll.length() << endl;
     for(int i = 0; i < 10; i++) {
         ll.push(i + 1);
     }
+    ll.print();
+    cout << delim;
+
+    cout << "size of ll before = " << ll.length() << endl;
     ll.push(10);
     ll.print();
-    cout << endl;
+    cout << delim;
+
+    cout << "size of ll before = " << ll.length() << endl;
     ll.push(20);
     ll.print();
-    cout << endl;
+    cout << delim;
+
+    cout << "size of ll before = " << ll.length() << endl;
     ll.push(40);
     ll.print();
-    cout << endl;
+    cout << delim;
 }
