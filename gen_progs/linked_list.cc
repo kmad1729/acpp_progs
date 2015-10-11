@@ -21,9 +21,11 @@ struct LL_Node {
 class LinkedList {
     private:
         LL_Node *head;
+        int size_ll;
 
     public:
-        LinkedList() { head = NULL; }
+        int size() const {return size_ll;}
+        LinkedList(): size_ll(0) { head = NULL; }
 
         void push(int data) {
             LL_Node **headRef = &head;
@@ -36,6 +38,7 @@ class LinkedList {
                 (new_node -> next) = head;
                 *headRef = new_node;
             }
+            size_ll++;
         }
 
         void print() {
@@ -55,6 +58,7 @@ class LinkedList {
                 result++;
             return result;
         }
+
 };
 
 
@@ -84,5 +88,9 @@ int main()
     cout << "size of ll before = " << ll.length() << endl;
     ll.push(40);
     ll.print();
+    cout << delim;
+
+    cout << "ll.length() = \t" << ll.length() << endl;
+    cout << "size_ll = \t" << ll.size();
     cout << delim;
 }
