@@ -33,7 +33,8 @@ class LinkedList {
             LL_Node *new_node = new LL_Node(data);
 
             if (head == NULL) {
-                *headRef = new_node;
+                //*headRef = new_node;
+                head = new_node;
             } else {
                 (new_node -> next) = head;
                 *headRef = new_node;
@@ -59,6 +60,24 @@ class LinkedList {
             return result;
         }
 
+        void append_node(int data) {
+
+            LL_Node *last_node = head;
+
+            LL_Node *new_node = new LL_Node(data);
+
+            if(last_node == NULL)
+                head = new_node;
+            else {
+                while((last_node -> next) != NULL) {
+                    last_node = (last_node -> next);
+                }
+
+                (last_node -> next) = new_node;
+            }
+
+        }
+
 };
 
 
@@ -67,7 +86,21 @@ int main()
     LinkedList ll;
 
     string delim = '\n' + string(20, '*') + '\n';
+    
+    /*
+    int new_node_append = 43;
+    cout << "appending node " << new_node_append << endl;
+    ll.append_node(new_node_append);
+    ll.print();
+    cout << delim;
 
+    new_node_append = 45;
+    cout << "appending node " << new_node_append << endl;
+    ll.append_node(new_node_append);
+    ll.print();
+    */
+
+    cout << delim;
     cout << "size of ll before = " << ll.length() << endl;
     for(int i = 0; i < 10; i++) {
         ll.push(i + 1);
@@ -92,5 +125,24 @@ int main()
 
     cout << "ll.length() = \t" << ll.length() << endl;
     cout << "size_ll = \t" << ll.size();
+    cout << delim;
+
+    int node_to_append = 42;
+    cout << "list before --> " << endl;
+    ll.print();
+    cout << endl << "appending node " << node_to_append << endl;
+    ll.append_node(node_to_append);
+    cout << "list after --> " << endl;
+    ll.print();
+
+    cout << delim;
+
+    node_to_append = 54;
+    cout << "list before --> " << endl;
+    ll.print();
+    cout << endl << "appending node " << node_to_append << endl;
+    ll.append_node(node_to_append);
+    cout << "list after --> " << endl;
+    ll.print();
     cout << delim;
 }
