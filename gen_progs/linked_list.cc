@@ -28,16 +28,13 @@ class LinkedList {
         LinkedList(): size_ll(0) { head = NULL; }
 
         void push(int data) {
-            LL_Node **headRef = &head;
-
             LL_Node *new_node = new LL_Node(data);
 
             if (head == NULL) {
-                //*headRef = new_node;
                 head = new_node;
             } else {
                 (new_node -> next) = head;
-                *headRef = new_node;
+                head = new_node;
             }
             size_ll++;
         }
@@ -75,6 +72,7 @@ class LinkedList {
 
                 (last_node -> next) = new_node;
             }
+            size_ll++;
 
         }
 
@@ -87,7 +85,6 @@ int main()
 
     string delim = '\n' + string(20, '*') + '\n';
     
-    /*
     int new_node_append = 43;
     cout << "appending node " << new_node_append << endl;
     ll.append_node(new_node_append);
@@ -98,7 +95,6 @@ int main()
     cout << "appending node " << new_node_append << endl;
     ll.append_node(new_node_append);
     ll.print();
-    */
 
     cout << delim;
     cout << "size of ll before = " << ll.length() << endl;
