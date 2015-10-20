@@ -73,7 +73,6 @@ class LinkedList {
                 (last_node -> next) = new_node;
             }
             size_ll++;
-
         }
 
 };
