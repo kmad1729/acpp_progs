@@ -1,11 +1,13 @@
 CC=g++
-CC_FLAGS = -Wall -g
+CC_FLAGS = -Wall -g -std=c++11
 
 ifeq ($(shell uname -s), Darwin)
 		CC_FLAGS += -stdlib=libstdc++
 endif
 
-_ALL=permute_using_iterator c_in_cpp c_rev_str c_int_char_cast c_transform_space remove_ex linked_list
+_ALL=permute_using_iterator c_in_cpp c_rev_str c_int_char_cast \
+		c_transform_space remove_ex linked_list gen_permute foo
+
 all: $(_ALL)
 
 permute_using_iterator: permute_using_iterator.cc
@@ -28,6 +30,13 @@ remove_ex: remove_ex.cc
 
 linked_list: linked_list.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
+
+gen_permute: gen_permute.cc
+	$(CC) -o $@ $< $(CC_FLAGS)
+
+foo: foo.cc
+	$(CC) -o $@ $< $(CC_FLAGS)
+
 
 clean:
 	rm -rf $(_ALL)
