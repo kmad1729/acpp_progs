@@ -52,11 +52,12 @@ int main()
     vector<int> v2(month_lengths, month_lengths + month_count);
     vector<int> v3;
     for(int i = 0; i < 20; i++) v3.push_back(i);
+    vector<int> v4(20, 20);
 
     const vector<int> vector_arr[] = {
-        v1, v2, v3
+        v1, v2, v3, v4
     };
-    for(int i = 0; i < 3; i++) {
+    for(int i = 0; i < 4; i++) {
         print_vector(vector_arr[i].begin(), vector_arr[i].end());
     }
     cout << delim;
