@@ -5,7 +5,8 @@ ifeq ($(shell uname -s), Darwin)
 		CC_Flags += -stdlib=libstdc++
 endif
 
-_ALL = basic_ptr string_methods array_initialization static_keyword_demo say
+_ALL = basic_ptr string_methods array_initialization static_keyword_demo say \
+	my_cp
 
 all: $(_ALL)
 
@@ -24,6 +25,8 @@ static_keyword_demo: static_keyword_demo.cc
 say: say.cc
 	$(CC) -o $@ $^ $(CC_Flags)
 
+my_cp: my_cp.cc
+	$(CC) -o $@ $^ $(CC_Flags)
 clean:
 	rm -rf $(_ALL)
 
