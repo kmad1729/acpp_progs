@@ -6,7 +6,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 _ALL = basic_ptr string_methods array_initialization static_keyword_demo say \
-	my_cp
+	my_cp my_cat
 
 all: $(_ALL)
 
@@ -27,6 +27,10 @@ say: say.cc
 
 my_cp: my_cp.cc
 	$(CC) -o $@ $^ $(CC_Flags)
+
+my_cat: my_cat.cc
+	$(CC) -o $@ $^ $(CC_Flags)
+
 clean:
 	rm -rf $(_ALL)
 
