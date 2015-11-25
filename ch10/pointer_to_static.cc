@@ -23,4 +23,12 @@ int main()
     cout << "setting z to pointer_to_static" << endl;
     int *z = pointer_to_static();
     cout << "*z = " << *z << endl;
+
+    cout << "x = " << x << endl;
+    cout << "y = " << y << endl;
+    cout << "z = " << z << endl;
+
+    if (x == y) {
+        cout << "memory addresses of x and y are same!" << endl;
+    }
 }
