@@ -6,7 +6,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 _ALL = basic_ptr string_methods array_initialization static_keyword_demo say \
-	my_cp my_cat
+	my_cp my_cat pointer_to_static
 
 all: $(_ALL)
 
@@ -29,6 +29,9 @@ my_cp: my_cp.cc
 	$(CC) -o $@ $^ $(CC_Flags)
 
 my_cat: my_cat.cc
+	$(CC) -o $@ $^ $(CC_Flags)
+
+pointer_to_static: pointer_to_static.cc
 	$(CC) -o $@ $^ $(CC_Flags)
 
 clean:
