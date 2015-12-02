@@ -6,7 +6,8 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 _ALL=permute_using_iterator c_in_cpp c_rev_str c_int_char_cast \
-		c_transform_space remove_ex linked_list gen_permute foo
+		c_transform_space remove_ex gen_permute \
+		merge_vec_of_vectors
 
 all: $(_ALL)
 
@@ -28,13 +29,13 @@ c_transform_space: c_transform_space.cc
 remove_ex: remove_ex.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
-linked_list: linked_list.cc
-	$(CC) -o $@ $< $(CC_FLAGS)
-
 gen_permute: gen_permute.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 foo: foo.cc
+	$(CC) -o $@ $< $(CC_FLAGS)
+
+merge_vec_of_vectors: merge_vec_of_vectors.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 
