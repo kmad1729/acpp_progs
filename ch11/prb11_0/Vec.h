@@ -3,7 +3,7 @@
 
 #include <cctype>
 #include <memory>
-#include "Vec.cc"
+#include <algorithm>
 
 template <class T>
 class Vec {
@@ -20,9 +20,9 @@ class Vec {
 
         Vec() {create();}
         explicit Vec(size_type n, const T& t = T()) {create(n, t);}
-        Vec(const Vec<T>& v) {create(v.begin(), v.end());}
+        Vec(const Vec& v) {create(v.begin(), v.end());}
 
-        Vec() operator= (const Vec<T>&);
+        Vec& operator= (const Vec&);//DONE
 
         ~Vec() {uncreate();}
 
@@ -48,16 +48,74 @@ class Vec {
         iterator avail;
         iterator limit;
 
-        void create();
-        void create(size_type, const T&);
-        void create(const_iterator, const_iterator);
+        void create(); //DONE
+        void create(size_type, const T&); //DONE
+        void create(const_iterator, const_iterator); //DONE
 
-        void uncreate();
+        void uncreate(); //DONE
 
         std::allocator<T> alloc;
 
-        void grow();
-        void unchecked_append(const T&);
+        void grow(); //DONE
+        void unchecked_append(const T&); //DONE
 };
+using std::max;
+
+template <class T> 
+Vec<T>& Vec<T>::operator= (const Vec& rhs) {
+    if (this != &rhs) {
+        uncreate();
+        create(rhs.begin(), rhs.end());
+    }
+    return *this;
+}
+
+template <class T>
+void Vec<T>::create() {
+    data = avail = limit = 0;
+}
+
+template <class T>
+void Vec<T>::create(size_type n, const T& val) {
+    data = alloc.allocate(n);
+    avail = limit = data + n;
+    std::uninitialized_fill(data, limit, val);
+}
+
+template <class T>
+void Vec<T>::create(const_iterator i, const_iterator j) {
+    data = alloc.allocate(j - i);
+    avail = limit = uninitialized_fill(i, j, data);
+}
+
+template <class T>
+void Vec<T>::uncreate() {
+    if(data) {
+        iterator it = avail;
+        while(it != data)
+            alloc.destroy(--it);
+        alloc.deallocate(data, limit - data);
+    }
+    data = avail = limit = 0;
+}
+
+template <class T>
+void Vec<T>::grow() {
+    size_type new_size = max(2 * (limit - data), ptrdiff_t(1));
+
+    iterator new_data = alloc.allocate(new_size);
+    iterator new_avail = uninitialized_fill(data, limit, new_data);
+
+    uncreate();
+
+    data = new_data;
+    avail = new_avail;
+    limit = data + new_size;
+}
+
+template <class T>
+void Vec<T>::unchecked_append(const T& val) {
+    alloc.construct(avail++, val);
+}
 
 #endif
