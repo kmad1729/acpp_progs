@@ -40,6 +40,8 @@ class Vec {
             unchecked_append(val);
         }
 
+        void clear() {uncreate(); data = avail = limit = 0;};
+
     private:
         iterator data;
         iterator avail;

@@ -26,4 +26,11 @@ int main() {
     cout << "v --> " << endl;
     copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
     cout << delim;
+    
+    cout << "after v clear" << endl;
+    v.clear();
+
+    cout << "v --> " << endl;
+    copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+    cout << delim;
 }
