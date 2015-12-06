@@ -42,6 +42,8 @@ class Vec {
 
         void clear() {uncreate(); data = avail = limit = 0;};
 
+        iterator erase(iterator);
+
     private:
         iterator data;
         iterator avail;
@@ -116,4 +118,12 @@ void Vec<T>::grow() {
 template <class T>
 void Vec<T>::unchecked_append(const T& val) {
     alloc.construct(avail++, val);
+}
+
+template <class T>
+typename Vec<T>::iterator Vec<T>::erase(iterator i) {
+    size_type result_pos = i - data;
+    avail = std::uninitialized_copy(i + 1, avail, i);
+    return data + result_pos;
+
 }

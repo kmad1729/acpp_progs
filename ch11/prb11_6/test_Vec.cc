@@ -26,7 +26,27 @@ int main() {
     cout << "v --> " << endl;
     copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
     cout << delim;
+
+    cout << "after v erase begin + ARR_LIMIT - 1" << endl;
+    v.erase(v.begin() + ARR_LIMIT - 1 );
+    cout << "v --> " << endl;
+    copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+    cout << delim;
+
+    cout << "after v erase begin + ARR_LIMIT / 2" << endl;
+    v.erase(v.begin() + ARR_LIMIT / 2);
+    cout << "v --> " << endl;
+    copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+    cout << delim;
     
+
+    cout << "after v erase v.begin()" << endl;
+    v.erase(v.begin());
+    cout << "v --> " << endl;
+    copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+    cout << delim;
+
+
     cout << "after v clear" << endl;
     v.clear();
 
