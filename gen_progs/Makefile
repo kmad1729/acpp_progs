@@ -7,7 +7,7 @@ endif
 
 _ALL=permute_using_iterator c_in_cpp c_rev_str c_int_char_cast \
 		c_transform_space remove_ex gen_permute \
-		merge_vec_of_vectors
+		merge_vec_of_vectors meeting_assign
 
 all: $(_ALL)
 
@@ -36,6 +36,9 @@ foo: foo.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 merge_vec_of_vectors: merge_vec_of_vectors.cc
+	$(CC) -o $@ $< $(CC_FLAGS)
+
+meeting_assign: meeting_assign.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 
