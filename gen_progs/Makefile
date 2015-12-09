@@ -7,7 +7,8 @@ endif
 
 _ALL=permute_using_iterator c_in_cpp c_rev_str c_int_char_cast \
 		c_transform_space remove_ex gen_permute \
-		merge_vec_of_vectors meeting_assign b_tree_reconstruction
+		merge_vec_of_vectors meeting_assign b_tree_reconstruction \
+		atoi_impl
 
 all: $(_ALL)
 
@@ -42,6 +43,9 @@ meeting_assign: meeting_assign.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 b_tree_reconstruction: b_tree_reconstruction.cc
+	$(CC) -o $@ $< $(CC_FLAGS)
+
+atoi_impl: atoi_impl.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 clean:
