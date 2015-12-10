@@ -23,7 +23,7 @@ int rotated_arr_search(const vector<T>& arr, const T& target)
     vec_iter front_ptr = back_ptr + 1;
     vec_iter rotation_point = back_ptr;
 
-    while(front_ptr < arr.end()) {
+    while(front_ptr != arr.end()) {
         if(*front_ptr < *back_ptr) {
             rotation_point = front_ptr;
             break;
@@ -84,7 +84,14 @@ int main()
     print_analysis(v1, 43);
     cout << delim;
     print_analysis(v1, -10);
+    cout << delim;
 
+    vector<int> v2(arr1, arr1 + 5);
+    print_analysis(v2, 42);
+    cout << delim;
+
+    vector<int> v3(arr1 + 3, arr1 + 5);
+    print_analysis(v3, 42);
     cout << delim;
 
     
