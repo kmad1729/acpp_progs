@@ -43,7 +43,7 @@ BTreeNode *get_min_ht_tree(const vector<int>& sorted_arr) {
 
     BTreeNode *result = 0;
     if(sorted_arr.size() > 0) {
-        vec_sz middle = sorted_arr.size();
+        vec_sz middle = sorted_arr.size() / 2;
         result = new BTreeNode(sorted_arr[middle]);
         (result -> right) = get_min_ht_tree(vector<int>(
                     sorted_arr.begin() + middle + 1,
@@ -65,5 +65,6 @@ int main()
     BTreeNode *tr = get_min_ht_tree(test_arr);
 
     print_pre_order(tr);
+    cout << endl;
     cout << delim << endl;
 }
