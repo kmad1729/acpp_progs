@@ -37,6 +37,15 @@ void print_pre_order(BTreeNode * n)
     }
 }
 
+void print_in_order(BTreeNode * n)
+{
+    if(n != 0) {
+        print_in_order(n -> left);
+        cout << (n -> data) << " ";
+        print_in_order(n -> right);
+    }
+}
+
 
 BTreeNode *get_min_ht_tree(const vector<int>& sorted_arr) {
     typedef vector<int>::size_type vec_sz;
@@ -65,6 +74,7 @@ int main()
     BTreeNode *tr = get_min_ht_tree(test_arr);
 
     print_pre_order(tr);
-    cout << endl;
-    cout << delim << endl;
+    cout << endl << delim;
+    print_in_order(tr);
+    cout << endl << delim;
 }
