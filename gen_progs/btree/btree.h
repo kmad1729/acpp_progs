@@ -56,5 +56,12 @@ bool lookup(Node* n, int target)
     }
 }
 
+//return the size of a binary tree. Return 0 if empty
+int size(Node* n)
+{
+    if(n == NULL) return 0;
+    else return (1 + size(n -> left) + size(n -> right));
+}
+
 
 #endif

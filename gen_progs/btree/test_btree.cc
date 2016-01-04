@@ -44,4 +44,9 @@ int main()
     lookup_int = 5;
     cout << lookup_int << " present in btree? " << lookup(root, lookup_int);
     cout << delim;
+
+    Node* emptyTree = NULL;
+    cout << "size of emptyTree = " << size(emptyTree) << endl;
+    cout << "size of current tree = " << size(root);
+    cout << delim;
 }
