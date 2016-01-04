@@ -28,5 +28,19 @@ Node* build123()
     return result;
 }
 
+//insert data into a given B.S.T node
+Node* insert(Node *n, int data)
+{
+    if(n == NULL) {
+        return new Node(data);
+    } else {
+        if (data <= (n -> data))
+            (n -> left) = insert((n -> left), data);
+        else
+            (n -> right) = insert((n -> right), data);
+        return n;
+    }
+}
+
 
 #endif

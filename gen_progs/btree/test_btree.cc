@@ -26,4 +26,11 @@ int main()
     cout << delim;
     cout << "root right = " << ((root -> right) -> data);
     cout << delim;
+
+    cout << "inserting 5 into the tree. It should be added to root -> right -> right" << endl;
+    root = insert(root, 5);
+    cout << "(root -> right -> right) = " <<
+        (((root -> right) -> right) -> data);
+    cout << delim;
+
 }
