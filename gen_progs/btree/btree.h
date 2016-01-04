@@ -182,7 +182,7 @@ void printPathsRecur(Node* n, int path[], int path_len)
 //printPaths: print all the root-to-leaf paths
 void printPaths(Node* n)
 {
-    int max_array_size_needed = maxDepth(n) + 1;
+    int max_array_size_needed = maxDepth(n);
     printPathsRecur(n, new int[max_array_size_needed], 0);
 }
 
