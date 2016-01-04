@@ -104,4 +104,14 @@ void printTree(Node* n)
     }
 }
 
+//printPostOrder: print post-order traversal of the binary tree
+void printPostOrder(Node *n)
+{
+    if(n != NULL) {
+        printPostOrder((n -> left));
+        printPostOrder((n -> right));
+        std::cout << (n -> data) << " ";
+    }
+}
+
 #endif

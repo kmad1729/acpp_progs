@@ -124,4 +124,24 @@ int main()
     printTree(root);
     cout << ")" << delim;
 
+    cout << "printing post order traversal of emptyTree -->" << endl << "(";
+    printPostOrder(emptyTree);
+    cout << ")" << endl;
+
+    cout << "printing post order traversal of singleNodeTree -->" << endl << "(";
+    printPostOrder(singleNodeTree);
+    cout << ")" << endl;
+
+    cout << "printing post order traversal of badBST -->" << endl << "(";
+    printPostOrder(badBST);
+    cout << ")" << endl;
+
+    cout << "printing post order traversal of badBST_left_linear -->" << endl << "(";
+    printPostOrder(badBST_left_linear);
+    cout << ")" << endl;
+
+    cout << "printing post order traversal of current tree -->" << endl << "(";
+    printPostOrder(root);
+    cout << ")" << delim;
+
 }
