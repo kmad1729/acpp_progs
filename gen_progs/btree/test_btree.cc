@@ -104,5 +104,24 @@ int main()
     }
     cout << delim;
 
+    cout << "printing inorder traversal of emptyTree -->" << endl << "(";
+    printTree(emptyTree);
+    cout << ")" << endl;
+
+    cout << "printing inorder traversal of singleNodeTree -->" << endl << "(";
+    printTree(singleNodeTree);
+    cout << ")" << endl;
+
+    cout << "printing inorder traversal of badBST -->" << endl << "(";
+    printTree(badBST);
+    cout << ")" << endl;
+
+    cout << "printing inorder traversal of badBST_left_linear -->" << endl << "(";
+    printTree(badBST_left_linear);
+    cout << ")" << endl;
+
+    cout << "printing inorder traversal of current tree -->" << endl << "(";
+    printTree(root);
+    cout << ")" << delim;
 
 }

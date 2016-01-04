@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
 
 struct Node {
     public:
@@ -93,6 +94,14 @@ int maxValue(Node *n)
         return (n -> data);
 }
 
-//maxValue: return maximum value in a B.S.T from a Non
+//printTree: print in-order traversal of a tree
+void printTree(Node* n)
+{
+    if(n != NULL) {
+        std::cout << (n -> data) << " ";
+        printTree((n -> left));
+        printTree((n -> right));
+    }
+}
 
 #endif
