@@ -214,4 +214,28 @@ void doubleTree(Node* n)
     }
 }
 
+//copyTree: copy a tree to have same values at each node
+Node* copyTree(Node* n)
+{
+    if(n != NULL) {
+        Node *result = new_node((n -> data));
+        (result -> left) = copyTree((n -> left));
+        (result -> right) = copyTree((n -> right));
+        return result;
+    }
+    return NULL;
+}
+
+//sameTree: return true if a and b are structurally same trees with same values
+//  at each node
+bool sameTree(Node* a, Node* b)
+{
+    if(a == NULL) return (b == NULL);
+    if(b == NULL) return (a == NULL);
+    if((a -> data) != (b -> data))
+        return false;
+    return sameTree((a -> left), (b -> left)) &&
+        sameTree((a -> right), (b -> right));
+}
+
 #endif

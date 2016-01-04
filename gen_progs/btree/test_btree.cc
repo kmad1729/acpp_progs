@@ -282,8 +282,6 @@ int main()
     cout << "post-order traversal of current tree after doubleTree -->" << endl;
     printPostOrder(root);
     cout << endl;
-    doubleTree(root);
-    cout << endl;
 
     doubleTree(neg_tree);
     cout << "in-order traversal of neg_tree tree after doubleTree -->" << endl;
@@ -292,9 +290,51 @@ int main()
     cout << "post-order traversal of neg_tree tree after doubleTree -->" << endl;
     printPostOrder(neg_tree);
     cout << endl;
-    doubleTree(neg_tree);
+
+    cout << delim;
+    
+    Node* copy_root = copyTree(root);
+    cout << "in-order traversal of current tree and copy tree-->" << endl;
+    printTree(root);
+    cout << endl;
+    printTree(copy_root);
+    cout << endl;
+
+    cout << "post-order traversal of current tree and copy tree -->" << endl;
+    printPostOrder(root);
+    cout << endl;
+    printPostOrder(copy_root);
+    cout << endl;
+
+    cout << endl;
+
+    Node* copy_neg_tree = copyTree(neg_tree);
+    cout << "in-order traversal of neg_tree tree and copy neg_tree-->" << endl;
+    printTree(neg_tree);
+    cout << endl;
+    printTree(copy_neg_tree);
+    cout << endl;
+
+    cout << "post-order traversal of neg_tree tree and copy neg_tree -->" << endl;
+    printPostOrder(neg_tree);
+    cout << endl;
+    printPostOrder(copy_neg_tree);
     cout << endl;
 
     cout << delim;
 
+    Node *copy_emptyTree = NULL;
+    cout << "emptyTree mirror of emptyTree (expected 1)? " << sameTree(emptyTree, emptyTree) << endl;
+    cout << "emptyTree mirror of copy_emptyTree (expected 1)? " << sameTree(emptyTree, copy_emptyTree) << endl;
+
+    cout << "neg_tree mirror of copy_neg_tree (expected 1)? " << sameTree(neg_tree, copy_neg_tree) << endl;
+
+
+    cout << "current tree mirror of neg_tree (expected 0)? " << sameTree(root, neg_tree) << endl;
+
+    cout << "current tree mirror of copy_current_tree (expected 1)? " << sameTree(root, copy_root) << endl;
+
+    cout << "current tree mirror of emptyTree (expected 0)? " << sameTree(root, emptyTree) << endl;
+
+    cout << delim;
 }
