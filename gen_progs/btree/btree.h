@@ -114,4 +114,33 @@ void printPostOrder(Node *n)
     }
 }
 
+//hasPathSum: return true if a root-to-leaf path sum exists in the tree
+bool hasPathSum(Node *n, int target_sum)
+{
+    if(n == NULL)
+        return (target_sum == 0);
+    else {
+        int new_tgt_sum = target_sum - (n -> data);
+        if ((n -> left) == NULL) {
+            if((n -> right) == NULL) {
+                //n is a leaf
+                return (new_tgt_sum == 0);
+            } else {
+                //n has only right sub tree
+                return hasPathSum((n -> right), new_tgt_sum);
+            }
+        } else {
+            if((n -> right) == NULL) {
+                // n has only left sub tree
+                return hasPathSum((n -> left), new_tgt_sum);
+            } else {
+                //n has both sub trees
+                return hasPathSum((n -> left), new_tgt_sum) ||
+                    hasPathSum((n -> right), new_tgt_sum);
+            }
+        }
+        return hasPathSum((n -> left), new_tgt_sum) ||
+            hasPathSum((n -> right), new_tgt_sum);
+    }
+}
 #endif

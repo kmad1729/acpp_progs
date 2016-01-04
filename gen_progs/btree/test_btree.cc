@@ -144,4 +144,91 @@ int main()
     printPostOrder(root);
     cout << ")" << delim;
 
+    Node* neg_tree = NULL;
+    neg_tree = insert(neg_tree, -6);
+    neg_tree = insert(neg_tree, -6);
+    neg_tree = insert(neg_tree, -42);
+    neg_tree = insert(neg_tree, -41);
+    neg_tree = insert(neg_tree, -108);
+    neg_tree = insert(neg_tree, 0);
+    neg_tree = insert(neg_tree, 0);
+
+    cout << "in order traversal of neg_tree --> " << endl << "(";
+    printTree(neg_tree);
+    cout << ")" << endl;
+
+    cout << "post order traversal of neg_tree --> " << endl << "(";
+    printPostOrder(neg_tree);
+    cout << ")" << endl;
+
+    int target_sum = -6;
+    cout << "neg_tree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(neg_tree, target_sum) << endl;
+
+    target_sum = -12;
+    cout << "neg_tree has path sum " << target_sum << " (expected 0) ? " <<
+        hasPathSum(neg_tree, target_sum) << endl;
+
+    target_sum = -102;
+    cout << "neg_tree has path sum " << target_sum << " (expected 0) ? " <<
+        hasPathSum(neg_tree, target_sum) << endl;
+
+    target_sum = -162;
+    cout << "neg_tree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(neg_tree, target_sum) << endl;
+
+    target_sum = -95;
+    cout << "neg_tree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(neg_tree, target_sum) << endl;
+
+    target_sum = 42;
+    cout << "singleNodeTree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(singleNodeTree, target_sum) << endl;
+
+    target_sum = 0;
+    cout << "singleNodeTree has path sum " << target_sum << " (expected 0) ? " <<
+        hasPathSum(singleNodeTree, target_sum) << endl;
+
+    target_sum = 0;
+    cout << "emptyTree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(emptyTree, target_sum) << endl;
+
+    target_sum = 3;
+    cout << "current tree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(root, target_sum) << endl;
+
+    target_sum = 2;
+    cout << "current tree has path sum " << target_sum << " (expected 0) ? " <<
+        hasPathSum(root, target_sum) << endl;
+
+    target_sum = 10;
+    cout << "current tree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(root, target_sum) << endl;
+
+    target_sum = 3;
+    cout << "current tree has path sum " << target_sum << " (expected 0) ? " <<
+        hasPathSum(root, target_sum) << endl;
+
+    target_sum = 5;
+    cout << "current tree has path sum " << target_sum << " (expected 0) ? " <<
+        hasPathSum(root, target_sum) << endl;
+
+    target_sum = 0;
+    cout << "badBST tree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(badBST, target_sum) << endl;
+
+    target_sum = 0;
+    cout << "badBST_left_linear tree has path sum " << target_sum << " (expected 1) ? " <<
+        hasPathSum(badBST_left_linear, target_sum) << endl;
+
+
+    target_sum = 20;
+    cout << "badBST_left_linear tree has path sum " << target_sum << " (expected 0) ? " <<
+        hasPathSum(badBST_left_linear, target_sum) << endl;
+
+
+
+
+
+
 }
