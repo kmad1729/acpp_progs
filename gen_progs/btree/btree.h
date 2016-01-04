@@ -199,5 +199,19 @@ void mirror(Node* n)
     }
 }
 
+//double: change the tree so that each node has its duplicate node added as its 
+//left child
+void doubleTree(Node* n)
+{
+    if(n != NULL) {
+        doubleTree((n -> left));
+        doubleTree((n -> right));
+
+        Node* tmpNode = new_node((n -> data));
+        (tmpNode -> left) = (n -> left);
+        (n -> left) = tmpNode;
+
+    }
+}
 
 #endif

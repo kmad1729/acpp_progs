@@ -275,4 +275,26 @@ int main()
 
     cout << delim;
 
+    doubleTree(root);
+    cout << "in-order traversal of current tree after doubleTree -->" << endl;
+    printTree(root);
+    cout << endl;
+    cout << "post-order traversal of current tree after doubleTree -->" << endl;
+    printPostOrder(root);
+    cout << endl;
+    doubleTree(root);
+    cout << endl;
+
+    doubleTree(neg_tree);
+    cout << "in-order traversal of neg_tree tree after doubleTree -->" << endl;
+    printTree(neg_tree);
+    cout << endl;
+    cout << "post-order traversal of neg_tree tree after doubleTree -->" << endl;
+    printPostOrder(neg_tree);
+    cout << endl;
+    doubleTree(neg_tree);
+    cout << endl;
+
+    cout << delim;
+
 }
