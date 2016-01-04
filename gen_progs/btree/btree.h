@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
+#include <iterator>
 
 struct Node {
     public:
@@ -143,4 +144,47 @@ bool hasPathSum(Node *n, int target_sum)
             hasPathSum((n -> right), new_tgt_sum);
     }
 }
+
+//printPathsRecur: helper function to keep track of all the nodes visited
+void printPathsRecur(Node* n, int path[], int path_len)
+{
+    if(n == NULL) {
+        std::cout << "path --> ";
+        std::copy(path, path + path_len, 
+                std::ostream_iterator<int>(std::cout, " "));
+        std::cout << std::endl;
+    } else {
+        path[path_len++] = (n -> data);
+        if((n -> left) == NULL) {
+            if((n -> right) == NULL) {
+                //encountered a leaf
+                std::cout << "path --> ";
+                std::copy(path, path + path_len, 
+                        std::ostream_iterator<int>(std::cout, " "));
+                std::cout << std::endl;
+            } else {
+                //only righ sub-tree exists
+                printPathsRecur((n -> right), path, path_len);
+            }
+        } else {
+            if((n -> right) == NULL) {
+                //only left sub-tree exists
+                printPathsRecur((n -> left), path, path_len);
+            } else {
+                //both sub-trees exist
+                printPathsRecur((n -> right), path, path_len);
+                printPathsRecur((n -> left), path, path_len);
+            }
+        }
+    }
+}
+
+//printPaths: print all the root-to-leaf paths
+void printPaths(Node* n)
+{
+    int max_array_size_needed = maxDepth(n) + 1;
+    printPathsRecur(n, new int[max_array_size_needed], 0);
+}
+
+
 #endif

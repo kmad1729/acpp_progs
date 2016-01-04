@@ -226,6 +226,33 @@ int main()
     cout << "badBST_left_linear tree has path sum " << target_sum << " (expected 0) ? " <<
         hasPathSum(badBST_left_linear, target_sum) << endl;
 
+    cout << delim;
+
+    cout << "root-to-leaf paths in current tree --> " << endl;
+    printPaths(root);
+    cout << endl;
+
+    cout << "root-to-leaf paths in singleNodeTree tree --> " << endl;
+    printPaths(singleNodeTree);
+    cout << endl;
+
+    cout << "root-to-leaf paths in emptyTree tree --> " << endl;
+    printPaths(emptyTree);
+    cout << endl;
+
+    cout << "root-to-leaf paths in badBST tree --> " << endl;
+    printPaths(badBST);
+    cout << endl;
+
+    cout << "root-to-leaf paths in badBST_left_linear tree --> " << endl;
+    printPaths(badBST_left_linear);
+    cout << endl;
+
+    cout << "root-to-leaf paths in neg_tree tree --> " << endl;
+    printPaths(neg_tree);
+
+    cout << delim;
+
 
 
 
