@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <algorithm>
+#include <stdexcept>
 
 struct Node {
     public:
@@ -70,5 +71,28 @@ int maxDepth(Node* n)
     if(n == NULL) return 0;
     else return 1 + std::max(maxDepth(n -> left), maxDepth(n -> right));
 }
+
+//minValue: return minimum value in a B.S.T from a NON-EMPTY tree 
+int minValue(Node* n)
+{
+    if(n == NULL)
+        throw std::domain_error("expecting a NON-EMPTY tree!");
+    while( (n -> left) != NULL)
+        n = (n -> left);
+    return (n -> data);
+}
+
+//maxValue: return maximum value in a B.S.T from a NON-EMPTY tree
+int maxValue(Node *n)
+{
+    if(n == NULL)
+        throw std::domain_error("expecting a NON-EMPTY tree!");
+    if((n -> right) != NULL)
+        return maxValue((n -> right));
+    else
+        return (n -> data);
+}
+
+//maxValue: return maximum value in a B.S.T from a Non
 
 #endif

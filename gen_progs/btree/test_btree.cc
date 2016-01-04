@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <iterator>
 #include <string>
+#include <stdexcept>
 
 using std::endl;
 using std::cout;
@@ -13,6 +14,8 @@ using std::copy;
 using std::ostream_iterator;
 
 using std::string;
+
+using std::domain_error;
 
 int main()
 {
@@ -61,4 +64,45 @@ int main()
     cout << "maxDepth of emptyTree (expected 0) = " << maxDepth(emptyTree);
 
     cout << delim;
+
+    Node* singleNodeTree = NULL;
+    singleNodeTree = insert(singleNodeTree, 42);
+
+    Node* badBST_left_linear = NULL;
+    for(int i = 10; i >= -10; i--)
+        badBST_left_linear = insert(badBST_left_linear, i);
+
+    cout << "min value in singleNodeTree (expected 42) = " << minValue(singleNodeTree) << endl;
+    cout << "max value in singleNodeTree (expected 42) = " << maxValue(singleNodeTree) << endl;
+
+    cout << "min value in badBST_left_linear (expected -10) = " << minValue(badBST_left_linear) << endl;
+    cout << "max value in badBST_left_linear (expected 10) = " << maxValue(badBST_left_linear) << endl;
+    cout << endl;
+
+    cout << "min value in badBST right liner (expected -20) = " << minValue(badBST) << endl;
+    cout << "max value in badBST right liner (expected 20) = " << maxValue(badBST) << endl;
+    cout << endl;
+
+    cout << "min value in current tree (expected 1) = " << minValue(root) << endl;
+    cout << "max value in current tree (expected 5) = " << maxValue(root) << endl;
+    cout << endl;
+
+    cout << "trying to find minimum value from an empty tree" << endl;
+    try {
+        cout << "min value in emptyTree = (expected exception) = " << endl <<
+            "\t" << minValue(emptyTree);
+    } catch (domain_error e) {
+        cout << e.what() << endl;
+    }
+
+    cout << "trying to find maximum value from an empty tree" << endl;
+    try {
+        cout << "max value in emptyTree = (expected exception) = " << endl << 
+            "\t" << maxValue(emptyTree);
+    } catch (domain_error e) {
+        cout << e.what();
+    }
+    cout << delim;
+
+
 }
