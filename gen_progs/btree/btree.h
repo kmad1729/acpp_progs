@@ -186,5 +186,18 @@ void printPaths(Node* n)
     printPathsRecur(n, new int[max_array_size_needed], 0);
 }
 
+//mirror: change the tree so that the roles of left and right nodes are swapped
+//          at every node
+void mirror(Node* n)
+{
+    if(n != NULL) {
+        Node* tmp = (n -> left);
+        (n -> left) = (n -> right);
+        (n -> right) = tmp;
+        mirror((n -> left));
+        mirror((n -> right));
+    }
+}
+
 
 #endif

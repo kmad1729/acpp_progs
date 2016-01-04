@@ -253,9 +253,26 @@ int main()
 
     cout << delim;
 
+    mirror(root);
+    cout << "in-order traversal of current tree after mirror -->" << endl;
+    printTree(root);
+    cout << endl;
+    cout << "post-order traversal of current tree after mirror -->" << endl;
+    printPostOrder(root);
+    cout << endl;
+    mirror(root);
+    cout << endl;
 
+    mirror(neg_tree);
+    cout << "in-order traversal of neg_tree tree after mirror -->" << endl;
+    printTree(neg_tree);
+    cout << endl;
+    cout << "post-order traversal of neg_tree tree after mirror -->" << endl;
+    printPostOrder(neg_tree);
+    cout << endl;
+    mirror(neg_tree);
+    cout << endl;
 
-
-
+    cout << delim;
 
 }
