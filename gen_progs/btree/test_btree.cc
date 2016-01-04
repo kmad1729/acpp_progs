@@ -49,4 +49,16 @@ int main()
     cout << "size of emptyTree = " << size(emptyTree) << endl;
     cout << "size of current tree = " << size(root);
     cout << delim;
+
+    Node* badBST = NULL;
+    cout << "creating a bad binary search tree (Very linear)" << endl;
+    for(int i = -20; i < 21; i++)
+        badBST = insert(badBST, i);
+    cout << "size of badBST = " << size(badBST) << endl;
+    cout << "maxDepth of badBST (expected 41) = " << maxDepth(badBST) << endl;
+
+    cout << "maxDepth of current Tree (expected 3) = " << maxDepth(root) << endl;
+    cout << "maxDepth of emptyTree (expected 0) = " << maxDepth(emptyTree);
+
+    cout << delim;
 }

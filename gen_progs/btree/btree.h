@@ -2,6 +2,7 @@
 #define Guard_btree_h
 
 #include <cstdlib>
+#include <algorithm>
 
 struct Node {
     public:
@@ -63,5 +64,11 @@ int size(Node* n)
     else return (1 + size(n -> left) + size(n -> right));
 }
 
+//maxDepth number of nodes in the longest path from node down to the farthest leaf
+int maxDepth(Node* n)
+{
+    if(n == NULL) return 0;
+    else return 1 + std::max(maxDepth(n -> left), maxDepth(n -> right));
+}
 
 #endif
