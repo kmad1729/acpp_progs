@@ -42,5 +42,19 @@ Node* insert(Node *n, int data)
     }
 }
 
+//lookup data in a B.S.T node. Return true if found
+bool lookup(Node* n, int target)
+{
+    if(n == NULL) return false;
+    else {
+        if((n -> data) == target)
+            return true;
+        else if (target < (n -> data))
+            return lookup((n -> left), target);
+        else
+            return lookup((n -> right), target);
+    }
+}
+
 
 #endif

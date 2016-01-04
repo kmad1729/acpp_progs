@@ -33,4 +33,15 @@ int main()
         (((root -> right) -> right) -> data);
     cout << delim;
 
+    int lookup_int = 1;
+    cout << lookup_int << " present in btree? " << lookup(root, lookup_int);
+    cout << delim;
+
+    lookup_int = -100;
+    cout << lookup_int << " present in btree? " << lookup(root, lookup_int);
+    cout << delim;
+
+    lookup_int = 5;
+    cout << lookup_int << " present in btree? " << lookup(root, lookup_int);
+    cout << delim;
 }
