@@ -238,4 +238,25 @@ bool sameTree(Node* a, Node* b)
         sameTree((a -> right), (b -> right));
 }
 
+//countTrees: get the number of unique BINARY SEARCH TREE 
+//structures for a given number of elements.
+int countTrees(int numElements)
+{
+    if(numElements <= 0)
+        return 1;
+    else {
+        int result = 0;
+
+        //counting the number of configurations with each element
+        //as a root
+        for(int root = 1; root <= numElements; root++) {
+            int left = countTrees(root - 1);
+            int right = countTrees(numElements - root);
+
+            result += (left * right);
+        }
+        return result;
+    }
+}
+
 #endif

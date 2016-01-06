@@ -337,4 +337,17 @@ int main()
     cout << "current tree mirror of emptyTree (expected 0)? " << sameTree(root, emptyTree) << endl;
 
     cout << delim;
+
+    int num_elements = 2;
+    cout << "number of structurully unique b.s.t with " << num_elements <<
+        " is (expected 2) " << countTrees(num_elements) << endl;
+
+    num_elements = 3;
+    cout << "number of structurully unique b.s.t with " << num_elements <<
+        " is (expected 5) " << countTrees(num_elements) << endl;
+
+    num_elements = 4;
+    cout << "number of structurully unique b.s.t with " << num_elements <<
+        " is (expected 14) " << countTrees(num_elements) << endl;
+    cout << delim;
 }
