@@ -2,6 +2,7 @@
 #define Guard_btree_h
 
 #include <cstdlib>
+#include <climits>
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
@@ -293,6 +294,46 @@ Node* get_BTree(const std::vector<int>& pre_order,
     } else {
         return NULL;
     }
+}
+
+//isBST_v1: return true if the given b tree is a B.S.T.
+//makes use of maxValue and minValue functions
+bool isBST_v1(Node *n)
+{
+    if(n == NULL)
+        return true;
+    else {
+        if((n -> left) != NULL) {
+            if(maxValue(n -> left) > (n -> data))
+                return false;
+        }
+        if((n -> right) != NULL) {
+            if(minValue(n -> right) <= (n -> data))
+                return false;
+        }
+
+        return(isBST_v1(n -> left) && isBST_v1(n -> right));
+    }
+}
+
+bool isBSTRecur(Node* n, int min, int max)
+{
+    if(n == NULL)
+        return true;
+    else {
+        if( (n -> data) < min ||
+                (n -> data) > max)
+            return false;
+        return isBSTRecur((n -> left), min, (n -> data)) &&
+            isBSTRecur((n -> right), (n -> data) + 1, max);
+    }
+}
+
+//isBST_v2: return true if the given b tree is a B.S.T
+//makes use of helper isBSTRecur function
+bool isBST_v2(Node* n)
+{
+    return isBSTRecur(n, INT_MIN, INT_MAX);
 }
 
 #endif

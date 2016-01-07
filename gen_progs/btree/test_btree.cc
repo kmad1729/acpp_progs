@@ -366,6 +366,77 @@ int main()
     cout << "post order of new tree expected --> \n(" << 
         "3 -4 19 12 18 12 16 5 6) got -->" << endl;
     printPostOrder(new_tree_root);
+    cout << endl;
+
+    sz = 5;
+    int io1[] = {1, 2, 6, 5, 7};
+    int pre_o1[] = {5, 2, 1, 6, 7};
+    vector<int> tricky_btree_in_order(io1, io1 + sz);
+    vector<int> tricky_btree_pre_order(pre_o1, pre_o1 + sz);
+
+    Node* tricky_btree_root = get_BTree(tricky_btree_pre_order,
+            tricky_btree_in_order);
+    cout << "post order of tricky btree expected --> \n(" << 
+        "1, 6, 2, 7, 5) got -->" << endl;
+    printPostOrder(tricky_btree_root);
+    cout << endl;
+
+    int io2[] = {1, 2, 4, 5, 5};
+    int pre_o2[] = {5, 2, 1, 4, 5};
+    vector<int> tricky_btree_in_order2(io2, io2 + sz);
+    vector<int> tricky_btree_pre_order2(pre_o2, pre_o2 + sz);
+    Node* tricky_btree_root2 = get_BTree(tricky_btree_pre_order2,
+            tricky_btree_in_order2);
+    cout << "post order of tricky btree 2 expected --> \n(" << 
+        "1, 4, 2, 5, 5) got -->" << endl;
+    printPostOrder(tricky_btree_root2);
     cout << endl << delim;
+
+
+    cout << "isBST_v1 tricky_btree_root (expected 0) --> " << 
+        isBST_v1(tricky_btree_root) << endl;
+
+    cout << "isBST_v1 tricky_btree_root2 (expected 0) --> " << 
+        isBST_v1(tricky_btree_root2) << endl;
+
+    cout << "isBST_v1 root (expected 1) --> " << 
+        isBST_v1(root) << endl;
+
+    cout << "isBST_v1 new_tree_root (expected 0) --> " << 
+        isBST_v1(new_tree_root) << endl;
+
+    cout << "isBST_v1 emptyTree (expected 1) --> " << 
+        isBST_v1(emptyTree) << endl;
+
+    cout << "isBST_v1 badBST (expected 1) --> " << 
+        isBST_v1(badBST) << endl;
+
+    cout << "isBST_v1 badBST_left_linear (expected 1) --> " << 
+        isBST_v1(badBST_left_linear) << endl;
+
+    cout << delim;
+
+    cout << "isBST_v2 tricky_btree_root (expected 0) --> " << 
+        isBST_v2(tricky_btree_root) << endl;
+
+    cout << "isBST_v2 tricky_btree_root2 (expected 0) --> " << 
+        isBST_v2(tricky_btree_root2) << endl;
+
+    cout << "isBST_v2 root (expected 1) --> " << 
+        isBST_v2(root) << endl;
+
+    cout << "isBST_v2 new_tree_root (expected 0) --> " << 
+        isBST_v2(new_tree_root) << endl;
+
+    cout << "isBST_v2 emptyTree (expected 1) --> " << 
+        isBST_v2(emptyTree) << endl;
+
+    cout << "isBST_v2 badBST (expected 1) --> " << 
+        isBST_v2(badBST) << endl;
+
+    cout << "isBST_v2 badBST_left_linear (expected 1) --> " << 
+        isBST_v2(badBST_left_linear) << endl;
+
+    cout << delim;
 
 }
