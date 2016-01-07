@@ -5,6 +5,7 @@
 #include <iterator>
 #include <string>
 #include <stdexcept>
+#include <vector>
 
 using std::endl;
 using std::cout;
@@ -16,6 +17,8 @@ using std::ostream_iterator;
 using std::string;
 
 using std::domain_error;
+
+using std::vector;
 
 int main()
 {
@@ -350,4 +353,19 @@ int main()
     cout << "number of structurully unique b.s.t with " << num_elements <<
         " is (expected 14) " << countTrees(num_elements) << endl;
     cout << delim;
+
+    int sz = 9;
+    int io[] = {-4, 3, 12, 19, 6, 5, 18, 16, 12};
+    int pre_o[] = {6, 12, -4, 3, 19, 5, 16, 18, 12};
+    vector<int> new_tree_in_order(io, io + sz);
+    vector<int> new_tree_pre_order(pre_o, pre_o + sz);
+
+    Node* new_tree_root = get_BTree(new_tree_pre_order, 
+            new_tree_in_order);
+
+    cout << "post order of new tree expected --> \n(" << 
+        "3 -4 19 12 18 12 16 5 6) got -->" << endl;
+    printPostOrder(new_tree_root);
+    cout << endl << delim;
+
 }

@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <iterator>
+#include <vector>
 
 struct Node {
     public:
@@ -256,6 +257,41 @@ int countTrees(int numElements)
             result += (left * right);
         }
         return result;
+    }
+}
+
+//get_BTree: construct a binary tree using pre-order and in-order traversals
+Node* get_BTree(const std::vector<int>& pre_order,
+        const std::vector<int>& in_order)
+{
+    using std::vector;
+    typedef vector<int>::size_type vec_sz;
+
+    if (pre_order.size() != in_order.size()) {
+        throw std::domain_error("input error. pre_order and in_order traversals don't have same sizes");
+    }
+    vec_sz sz = pre_order.size();
+    if(sz != 0) {
+        int root_data = pre_order[0];
+        Node* root_node = new_node(root_data);
+        vector<int>::const_iterator io_root_ref = 
+            std::find(in_order.begin(), in_order.end(), root_data);
+
+        vector<int> left_subtree_io(in_order.begin(), io_root_ref);
+        vector<int> righ_subtree_io(io_root_ref + 1, in_order.end());
+
+        vec_sz left_subtree_size = left_subtree_io.size();
+        vector<int> left_subtree_pre_o(pre_order.begin() + 1,
+                pre_order.begin() + 1 + left_subtree_size);
+        vector<int> right_subtree_pre_o(pre_order.begin() + 1 + left_subtree_size,
+                pre_order.end());
+
+        (root_node -> left) = get_BTree(left_subtree_pre_o, left_subtree_io);
+        (root_node -> right) = get_BTree(right_subtree_pre_o, righ_subtree_io);
+
+        return root_node;
+    } else {
+        return NULL;
     }
 }
 
