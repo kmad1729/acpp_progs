@@ -439,4 +439,33 @@ int main()
 
     cout << delim;
 
+    cout << "max path sum for tricky_btree_root --> expected(20): " <<
+        maxPathSum(tricky_btree_root) << endl;
+    cout << "max path sum for tricky_btree_root2 --> expected(16): " <<
+        maxPathSum(tricky_btree_root2) << endl;
+
+    cout << "max path sum for current tree --> expected(19): " <<
+        maxPathSum(root) << endl;
+
+    cout << "max path sum for neg_tree --> expected(0): " <<
+        maxPathSum(neg_tree) << endl;
+
+    sz = 8;
+    int io3[] = {20, 2, 1, 10, 10, 3, -25, 4};
+    int pre_o3[] = {10, 2, 20, 1, 10, -25, 3, 4};
+    vector<int> tricky_btree_in_order3(io3, io3 + sz);
+    vector<int> tricky_btree_pre_order3(pre_o3, pre_o3 + sz);
+    Node* tricky_btree_root3 = get_BTree(tricky_btree_pre_order3,
+            tricky_btree_in_order3);
+    cout << "post order of tricky btree 3 expected --> \n(" << 
+        "20 1 2 3 4 -25 10 10) got -->" << endl;
+    printPostOrder(tricky_btree_root3);
+    cout << endl;
+
+    cout << "max path sum for tricky_btree_root3 --> expected(42): " <<
+        maxPathSum(tricky_btree_root3) << endl;
+
+    cout << delim;
+
+
 }

@@ -336,4 +336,36 @@ bool isBST_v2(Node* n)
     return isBSTRecur(n, INT_MIN, INT_MAX);
 }
 
+//maxPathUtil: utility function to fine maximum path sum
+//res stores the maximum sum possible at a given node
+//function returns the maximum sum passing through the given node
+int maxPathUtil(Node* n, int& res)
+{
+    if(n == NULL)
+        return 0;
+
+    int l = maxPathUtil((n -> left), res);
+    int r = maxPathUtil((n -> right), res);
+
+    //get the maximum sum passing through the node
+    int max_at_node = std::max(std::max(l, r) + (n -> data), (n -> data));
+
+    //get the maximum sum for a path with current node at root
+    int max_top = std::max(max_at_node, l + r + (n -> data));
+
+    //store the above result
+    res = std::max(res, max_top);
+
+    //return the maximum sum passing through the node
+    return max_at_node;
+}
+
+//maxPathSum: return the maximum sum for all the path in a binary tree
+int maxPathSum(Node *n)
+{
+    int res = INT_MIN;
+    maxPathUtil(n, res);
+    return res;
+}
+
 #endif
