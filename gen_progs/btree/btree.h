@@ -101,8 +101,8 @@ int maxValue(Node *n)
 void printTree(Node* n)
 {
     if(n != NULL) {
-        std::cout << (n -> data) << " ";
         printTree((n -> left));
+        std::cout << (n -> data) << " ";
         printTree((n -> right));
     }
 }
@@ -366,6 +366,29 @@ int maxPathSum(Node *n)
     int res = INT_MIN;
     maxPathUtil(n, res);
     return res;
+}
+
+//deleteNode: delete a node with given value from a b.s.t
+Node* deleteNode(Node* n, int tgt)
+{
+    if(n != NULL) {
+        if((n -> data) == tgt) {
+            if((n -> left) != NULL) {
+                int max_left_val = maxValue((n -> left));
+                (n -> data) = max_left_val;
+                (n -> left) = deleteNode((n -> left), max_left_val);
+            } else {
+                Node* tmp = n;
+                n = (n -> right);
+                delete tmp;
+            }
+        } else if (tgt < (n -> data)) {
+            (n -> left) = deleteNode((n -> left), tgt);
+        } else {
+            (n -> right) = deleteNode((n -> right), tgt);
+        }
+    }
+    return n;
 }
 
 #endif
