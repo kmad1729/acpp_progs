@@ -5,11 +5,14 @@ ifeq ($(shell uname -s), Darwin)
 	CC_Flags += --stdlib=libstdc++
 endif
 
-_ALL= Vec_test
+_ALL= Vec_test Str_test
 
 all: $(_ALL)
 
 Vec_test: Vec_test.cc
+	$(CC) -o $@ $^ $(CC_Flags)
+
+Str_test: Str_test.cc
 	$(CC) -o $@ $^ $(CC_Flags)
 
 clean:

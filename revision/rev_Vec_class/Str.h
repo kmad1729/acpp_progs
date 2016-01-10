@@ -1,4 +1,19 @@
-#ifndef Guard_Str_h
-#define Guard_Str_h
+#pragma once
 
-#endif
+#include "Vec.h"
+
+class Str {
+    public:
+        typedef Vec<char>::size_type size_type;
+
+        Str() {};
+
+        Str(size_type n, char c) : data(n, c) { }
+
+
+
+    private:
+        Vec<char> data;
+
+
+};
