@@ -24,6 +24,8 @@ class Str {
         template <class In>
             Str(In b, In e) {std::copy(b, e, std::back_inserter(data));}
 
+        void clear() { data.clear(); }
+
     private:
         Vec<char> data;
 };

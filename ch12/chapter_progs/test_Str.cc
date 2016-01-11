@@ -58,4 +58,8 @@ int main()
 
     cout << delim << endl;
 
+    cout << "clearing s3" << endl;
+    s3.clear();
+    cout << "s3 --> (" << s3 << ")" << endl;
+
 }

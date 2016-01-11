@@ -35,6 +35,8 @@ class Vec {
 
         ~Vec() {uncreate();}
 
+        void clear() {uncreate(); data = avail = limit = 0;}
+
         void push_back(const T& val) {
             if(avail == limit)
                 grow();
