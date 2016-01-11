@@ -9,14 +9,12 @@ class Str {
         Str() {};
         Str(size_type n, char c): data(n, c) {};
 
-        Str(const char *cp) {
-            std::copy(cp, cp + strlen(cp), std::back_inserter(data));
-        }
+        Str(const char* cp) {std::copy(cp, cp + std::strlen(cp), 
+                std::back_inserter(data));}
 
         template <class In>
-        Str(In b, In e) {
-            std::copy(b, e, std::back_inserter(data));
-        }
+            Str(In b, In e) {std::copy(b, e, std::back_inserter(data));}
+
 
     private:
         Vec<char> data;

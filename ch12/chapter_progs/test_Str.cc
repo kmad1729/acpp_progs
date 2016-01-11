@@ -3,15 +3,18 @@
 #include <iostream>
 #include <iterator>
 #include <algorithm>
+#include <string>
 
 using std::cout;
 using std::endl;
 using std::ostream_iterator;
 using std::copy;
 using std::back_inserter;
+using std::string;
 
 int main()
 {
+    cout << "create Str using replicate constructor" << endl;
     Str delim(20, '*');
     cout << "delim -->" << endl;
     //cout << delim << endl;
@@ -30,7 +33,22 @@ int main()
     }
 
 
-    //Str new_char(new_chars.begin(), new_chars.end());
+    cout << "creating Str using Input iterator constructor -->" << endl;
+    Str new_char(new_chars.begin(), new_chars.end());
+
+    cout << "creating Str using const char* constructor -->" << endl;
+    string s1 = "Hello";
+    Str s2(s1.c_str());
+
+    cout << "creating Str using initialization operator which in-turn uses" <<
+        " const char* constructor" << endl;
+    Str s3 = "Hello";
+    //cout << "s3 --> (" << s3 << ")" << endl;
+
+    cout << "assining Str to another const char*. It uses const char*" << 
+        " constructor a user-defined conversion" << endl;
+    s3 = "World";
+
 
     cout << "new char -->" << endl;
     copy(new_chars.begin(), new_chars.end(), ostream_iterator<char>(cout, " "));
