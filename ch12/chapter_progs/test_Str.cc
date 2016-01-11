@@ -16,8 +16,7 @@ int main()
 {
     cout << "create Str using replicate constructor" << endl;
     Str delim(20, '*');
-    cout << "delim -->" << endl;
-    //cout << delim << endl;
+    cout << "delim --> (" << delim << ")" << endl;
 
     Vec<char> new_chars;
     Vec<int> ints;
@@ -33,30 +32,30 @@ int main()
     }
 
 
+    cout << delim << endl;
     cout << "creating Str using Input iterator constructor -->" << endl;
     Str new_char(new_chars.begin(), new_chars.end());
+    cout << "new_char --> (" << new_char << ")" << endl;
 
+    cout << delim << endl;
     cout << "creating Str using const char* constructor -->" << endl;
     string s1 = "Hello";
     Str s2(s1.c_str());
+    cout << "s2 --> (" << s2 << ")" << endl;
 
+    cout << delim << endl;
     cout << "creating Str using initialization operator which in-turn uses" <<
         " const char* constructor" << endl;
     Str s3 = "Hello";
-    //cout << "s3 --> (" << s3 << ")" << endl;
+    cout << "s3 --> (" << s3 << ")" << endl;
 
+    cout << delim << endl;
     cout << "assining Str to another const char*. It uses const char*" << 
         " constructor a user-defined conversion" << endl;
     s3 = "World";
+    cout << "s3 --> (" << s3 << ")" << endl;
 
 
-    cout << "new char -->" << endl;
-    copy(new_chars.begin(), new_chars.end(), ostream_iterator<char>(cout, " "));
-    cout << endl;
-
-    cout << "new ints -->" << endl;
-    copy(ints.begin(), ints.end(), ostream_iterator<int>(cout, " "));
-    cout << endl;
-    //cout << new_char << endl;
+    cout << delim << endl;
 
 }
