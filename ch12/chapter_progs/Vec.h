@@ -35,7 +35,7 @@ class Vec {
 
         ~Vec() {uncreate();}
 
-        void clear() {uncreate(); data = avail = limit = 0;}
+        void clear() {uncreate();}
 
         void push_back(const T& val) {
             if(avail == limit)
@@ -110,6 +110,7 @@ void Vec<T>::uncreate() {
             alloc.destroy(--it);
         alloc.deallocate(data, limit - data);
     }
+    data = limit = avail = 0;
 }
 
 template<class T>
