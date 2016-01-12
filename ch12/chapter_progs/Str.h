@@ -4,6 +4,7 @@
 #include <cstring>
 #include <algorithm>
 #include <iostream>
+#include <cctype>
 
 class Str {
     public:
@@ -26,6 +27,8 @@ class Str {
 
         void clear() { data.clear(); }
 
+        friend std::istream& operator>>(std::istream&, Str&);
+
     private:
         Vec<char> data;
 };
@@ -35,4 +38,22 @@ std::ostream& operator<<(std::ostream& os, const Str& s) {
     for(Str::size_type i = 0; i < s.size(); i++)
         os << s[i];
     return os;
+}
+
+std::istream& operator>>(std::istream& is, Str& s)
+{
+    if(is) {
+        s.clear();
+        char c;
+        while(is.get(c) && isspace(c))
+            ;
+        if(is) {
+            do {
+                s.data.push_back(c);
+            } while(is.get(c) && !isspace(c));
+        }
+        if(is)
+            is.unget();
+    }
+    return is;
 }

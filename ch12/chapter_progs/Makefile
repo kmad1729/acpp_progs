@@ -5,12 +5,15 @@ ifeq ($(shell uname -s), Darwin)
 		CC_Flags += --stdlib=libstdc++
 endif
 
-_ALL= test_Str
+_ALL= test_Str test_operators_Str
 
 all: $(_ALL)
 
 
 test_Str: test_Str.cc
+	$(CC) $(CC_Flags) -o $@ $^
+
+test_operators_Str: test_operators_Str.cc
 	$(CC) $(CC_Flags) -o $@ $^
 
 
