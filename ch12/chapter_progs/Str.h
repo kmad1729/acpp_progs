@@ -27,6 +27,13 @@ class Str {
 
         void clear() { data.clear(); }
 
+        //+= operator
+        Str& operator+=(const Str& s) {
+            std::copy(s.data.begin(), s.data.end(),
+                    std::back_inserter(data));
+            return *this;
+        }
+
         friend std::istream& operator>>(std::istream&, Str&);
 
     private:
@@ -56,4 +63,11 @@ std::istream& operator>>(std::istream& is, Str& s)
             is.unget();
     }
     return is;
+}
+
+Str operator+(const Str& s, const Str& t)
+{
+    Str r = s;
+    r += t;
+    return r;
 }

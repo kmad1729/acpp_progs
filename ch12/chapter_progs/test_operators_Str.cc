@@ -45,4 +45,18 @@ int main() {
         cout << v[i] << endl;
 
     cout << delim << endl;
+
+    Str delim_copy(delim);
+    delim_copy += "Middle";
+    delim_copy += delim;
+    cout << "new delim copy --> " << endl;
+    cout << delim_copy << endl;
+
+    cout << delim << endl;
+
+    cout << "testing the A + B + C operation -->" << endl;
+    Str s1 = "Hello " + name + "! How are you? ";
+    cout << s1 << endl;
+
+    cout << delim << endl;
 }
