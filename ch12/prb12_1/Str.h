@@ -19,6 +19,9 @@ class Str {
         Str() { create(); }
         Str(size_type n, char c) { create(n, c);}
 
+        template<class In>
+            Str(In b, const In e) { create(b, e);}
+
         ~Str() {uncreate();}
 
 
@@ -29,8 +32,20 @@ class Str {
 
         void create();
         void create(size_type, char);
+        template<class In>
+            void create(In, In);
+
         void uncreate();
 };
+
+template <class In>
+void Str::create(In b, In e)
+{
+    data = alloc.allocate(e - b + 1);
+    std::uninitialized_copy(b, e, data);
+    len = e - b;
+    data[len] = '\0';
+}
 
 std::ostream& operator<<(std::ostream& os, const Str& s)
 {
