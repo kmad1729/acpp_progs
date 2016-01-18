@@ -3,6 +3,7 @@
 #include <memory>
 #include <cctype>
 #include <iostream>
+#include <algorithm>
 
 class Str {
     public:
@@ -24,10 +25,18 @@ class Str {
 
         ~Str() {uncreate();}
 
+        friend std::istream& operator>>(std::istream&, Str&);
+
+        void clear() {uncreate();}
+
+
 
     private:
-        char* data;
+        iterator data;
+        iterator avail;
+        iterator limit;
         size_type len;
+
         std::allocator<char> alloc;
 
         void create();
@@ -35,8 +44,48 @@ class Str {
         template<class In>
             void create(In, In);
 
+        void grow();
         void uncreate();
 };
+
+void Str::grow()
+{
+    size_type new_len = std::max(2 * len, size_type(1));
+
+    char *new_data = alloc.allocate(new_len);
+    std::uninitialized_copy(data, data + len, new_data);
+
+    uncreate();
+
+    data = new_data;
+    avail = data + len + 1;
+    limit = data + new_len;
+}
+
+
+std::istream& operator>>(std::istream& is, Str& s)
+{
+    if(is) {
+        s.clear();
+        char c;
+
+        while(is.get(c) && std::isspace(c))
+            ;
+        if(is) {
+            do {
+                if(s.avail == s.limit)
+                    s.grow();
+                s.data[s.len++] = c;
+            } while(is.get(c) && !isspace(c));
+            s.data[s.len] = '\0';
+        }
+
+        if(is)
+            is.unget();
+
+    }
+    return is;
+}
 
 template <class In>
 void Str::create(In b, In e)
@@ -45,6 +94,7 @@ void Str::create(In b, In e)
     std::uninitialized_copy(b, e, data);
     len = e - b;
     data[len] = '\0';
+    avail = limit = data + len + 1;
 }
 
 std::ostream& operator<<(std::ostream& os, const Str& s)
@@ -60,6 +110,7 @@ void Str::create()
     data = alloc.allocate(1);
     data[0] = '\0';
     len = 0;
+    avail = limit = data + 1;
 }
 
 void Str::create(size_type n, char c)
@@ -68,10 +119,11 @@ void Str::create(size_type n, char c)
     std::uninitialized_fill(data, data + n, c);
     data[n] = '\0';
     len = n;
+    avail = limit = data + len + 1;
 }
 
 void Str::uncreate()
 {
     alloc.deallocate(data, len + 1);
-    data = NULL;
+    data = avail = limit = 0;
 }

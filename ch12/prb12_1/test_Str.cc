@@ -27,4 +27,11 @@ int main()
     cout << "vowel_str --> " << vowel_str << endl;
 
     cout << delim << endl;
+
+    cout << "testing >> operator" << endl;
+    Str name;
+    cout << "please enter your name: ";
+    cin >> name;
+    cout << "Hello, " << name << "!" << endl;
+    cout << delim << endl;
 }
