@@ -173,3 +173,23 @@ bool operator!=(const Str& lhs, const Str& rhs)
 {
     return (std::strcmp(lhs.c_str(), rhs.c_str()) != 0);
 }
+
+bool operator<(const Str& lhs, const Str& rhs)
+{
+    return (std::strcmp(lhs.c_str(), rhs.c_str()) < 0);
+}
+
+bool operator<=(const Str& lhs, const Str& rhs)
+{
+    return (std::strcmp(lhs.c_str(), rhs.c_str()) <= 0);
+}
+
+bool operator>(const Str& lhs, const Str& rhs)
+{
+    return (std::strcmp(lhs.c_str(), rhs.c_str()) > 0);
+}
+
+bool operator>=(const Str& lhs, const Str& rhs)
+{
+    return (std::strcmp(lhs.c_str(), rhs.c_str()) >= 0);
+}

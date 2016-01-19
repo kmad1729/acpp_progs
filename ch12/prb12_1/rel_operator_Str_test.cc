@@ -21,64 +21,175 @@ int main()
 
     cout << "testing (==) rel operator" << endl;
     if(s1 == s2) 
-        cout << s1 << " == " << s2 << " ? " << "true";
+        cout << s1 << " == " << s2 << " ? " << "true" << " expected false ";
     else
-        cout << s1 << " == " << s2 << " ? " << "false";
+        cout << s1 << " == " << s2 << " ? " << "false" << " expected false ";
 
     cout << endl;
 
     if(s1 == s1) 
-        cout << s1 << " == " << s1 << " ? " << "true";
+        cout << s1 << " == " << s1 << " ? " << "true" << " expected true ";
     else
-        cout << s1 << " == " << s1 << " ? " << "false";
+        cout << s1 << " == " << s1 << " ? " << "false" << " expected true ";
 
     cout << endl;
     cout << delim << endl;
 
     cout << "testing (==) rel operator between Str and const char *" << endl;
     if(c_str1 == s1) 
-        cout << c_str1 << " == " << s1 << " ? " << "true";
+        cout << c_str1 << " == " << s1 << " ? " << "true" << "expected true ";
     else
-        cout << c_str1 << " == " << s1 << " ? " << "false";
+        cout << c_str1 << " == " << s1 << " ? " << "false" << "expected true ";
 
     cout << endl;
     if(c_str1 == s2) 
-        cout << c_str1 << " == " << s2 << " ? " << "true";
+        cout << c_str1 << " == " << s2 << " ? " << "true" << "expected false ";
     else
-        cout << c_str1 << " == " << s2 << " ? " << "false";
+        cout << c_str1 << " == " << s2 << " ? " << "false" << "expected false ";
 
     cout << endl;
     cout << delim << endl;
 
+
+    //////// != OPERATOR /////////
+
     cout << "testing (!=) rel operator between Str and const char *" << endl;
     if(c_str1 != s1) 
-        cout << c_str1 << " != " << s1 << " ? " << "true";
+        cout << c_str1 << " != " << s1 << " ? " << "true" << " expected false ";
     else
-        cout << c_str1 << " != " << s1 << " ? " << "false";
+        cout << c_str1 << " != " << s1 << " ? " << "false" << " expected false ";
 
     cout << endl;
     if(c_str1 != s2) 
-        cout << c_str1 << " != " << s2 << " ? " << "true";
+        cout << c_str1 << " != " << s2 << " ? " << "true" << " expected true ";
     else
-        cout << c_str1 << " != " << s2 << " ? " << "false";
+        cout << c_str1 << " != " << s2 << " ? " << "false" << " expected true ";
 
     cout << endl;
     cout << delim << endl;
 
     cout << "testing (!=) rel operator" << endl;
     if(s1 != s2) 
-        cout << s1 << " != " << s2 << " ? " << "true";
+        cout << s1 << " != " << s2 << " ? " << "true" << " expected true ";
     else
-        cout << s1 << " != " << s2 << " ? " << "false";
+        cout << s1 << " != " << s2 << " ? " << "false" << " expected true ";
 
     cout << endl;
 
     if(s1 != s1) 
-        cout << s1 << " != " << s1 << " ? " << "true";
+        cout << s1 << " != " << s1 << " ? " << "true" << " expected false ";
     else
-        cout << s1 << " != " << s1 << " ? " << "false";
+        cout << s1 << " != " << s1 << " ? " << "false" << " expected false ";
+
+    cout << endl;
+    cout << delim << endl;
+   
+    //////// //////// /////////
+    
+    //////// < OPERATOR /////////
+
+    cout << "testing (<) rel operator between Str and const char *" << endl;
+    if(c_str1 < s1) 
+        cout << c_str1 << " < " << s1 << " ? " << "true" << " expected false ";
+    else
+        cout << c_str1 << " < " << s1 << " ? " << "false" << " expected false ";
+
+    cout << endl;
+    if(c_str1 < s2) 
+        cout << c_str1 << " < " << s2 << " ? " << "true" << " expected true ";
+    else
+        cout << c_str1 << " < " << s2 << " ? " << "false" << " expected true ";
 
     cout << endl;
     cout << delim << endl;
 
+    cout << "testing (<) rel operator" << endl;
+    if(s1 < s2) 
+        cout << s1 << " < " << s2 << " ? " << "true" << " expected true ";
+    else
+        cout << s1 << " < " << s2 << " ? " << "false" << " expected true ";
+
+    cout << endl;
+
+    if(s1 < s1) 
+        cout << s1 << " < " << s1 << " ? " << "true" << " expected false";
+    else
+        cout << s1 << " < " << s1 << " ? " << "false" << " expected false";
+
+    cout << endl;
+    cout << delim << endl;
+   
+    //////// //////// /////////
+
+    //////// <= OPERATOR /////////
+
+    cout << "testing (<=) rel operator between Str and const char *" << endl;
+    if(c_str1 <= s1) 
+        cout << c_str1 << " <= " << s1 << " ? " << "true" << " expected true ";
+    else
+        cout << c_str1 << " <= " << s1 << " ? " << "false" << " expected true ";
+
+    cout << endl;
+    if(c_str1 <= s2) 
+        cout << c_str1 << " <= " << s2 << " ? " << "true" << " expected true ";
+    else
+        cout << c_str1 << " <= " << s2 << " ? " << "false" << " expected true ";
+
+    cout << endl;
+    cout << delim << endl;
+
+    cout << "testing (<=) rel operator" << endl;
+    if(s1 <= s2) 
+        cout << s1 << " <= " << s2 << " ? " << "true" << " expected true ";
+    else
+        cout << s1 << " <= " << s2 << " ? " << "false" << " expected true ";
+
+    cout << endl;
+
+    if(s1 <= s1) 
+        cout << s1 << " <= " << s1 << " ? " << "true" << " expected true ";
+    else
+        cout << s1 << " <= " << s1 << " ? " << "false" << " expected true ";
+
+    cout << endl;
+    cout << delim << endl;
+    cout << delim << endl;
+   
+    //////// //////// /////////
+    
+    //////// >= OPERATOR /////////
+
+    cout << "testing (>=) rel operator between Str and const char *" << endl;
+    if(c_str1 >= s1) 
+        cout << c_str1 << " >= " << s1 << " ? " << "true" << " expected true ";
+    else
+        cout << c_str1 << " >= " << s1 << " ? " << "false" << " expected true ";
+
+    cout << endl;
+    if(c_str1 >= s2) 
+        cout << c_str1 << " >= " << s2 << " ? " << "true" << " expected false ";
+    else
+        cout << c_str1 << " >= " << s2 << " ? " << "false" << " expected false ";
+
+    cout << endl;
+    cout << delim << endl;
+
+    cout << "testing (>=) rel operator" << endl;
+    if(s1 >= s2) 
+        cout << s1 << " >= " << s2 << " ? " << "true" << " expected false ";
+    else
+        cout << s1 << " >= " << s2 << " ? " << "false" << " expected false ";
+
+    cout << endl;
+
+    if(s1 >= s1) 
+        cout << s1 << " >= " << s1 << " ? " << "true" << " expected true ";
+    else
+        cout << s1 << " >= " << s1 << " ? " << "false" << " expected true ";
+
+    cout << endl;
+    cout << delim << endl;
+    cout << delim << endl;
+   
+    //////// //////// /////////
 }
