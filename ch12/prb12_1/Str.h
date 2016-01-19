@@ -4,6 +4,7 @@
 #include <cctype>
 #include <iostream>
 #include <algorithm>
+#include <cstring>
 
 class Str {
     public:
@@ -12,6 +13,12 @@ class Str {
         typedef char* iterator;
         typedef const char* const_itearator;
 
+        iterator begin() {return str_beg;}
+        const_itearator begin() const {return str_beg;}
+
+        iterator end() {return avail;}
+        const_itearator end() const {return avail;}
+
         size_type size() const {return avail - str_beg;}
 
         char& operator[](size_type i) { return str_beg[i];}
@@ -19,6 +26,7 @@ class Str {
 
         Str() { create(); }
         Str(size_type n, char c) { create(n, c);}
+        Str(const char*);
 
         template<class In>
             Str(In b, const In e) { create(b, e);}
@@ -64,6 +72,11 @@ Str::size_type Str::copy(char* s, size_type n) const
     return result;
 }
 
+Str::Str(const char* s)
+{
+    create(s, s + std::strlen(s));
+}
+
 void Str::grow()
 {
     size_type new_len = std::max(2 * (limit - str_beg), std::ptrdiff_t(1)) + 1;
@@ -96,7 +109,6 @@ std::istream& operator>>(std::istream& is, Str& s)
         if(is) {
             do {
                 if(s.avail == s.limit) {
-                    std::cout << "adding char (" << c << ") as avail = limit" << std::endl;
                     s.grow();
                 }
                 s.unchecked_append(c);
