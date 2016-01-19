@@ -34,4 +34,15 @@ int main()
     cin >> name;
     cout << "Hello, " << name << "!" << endl;
     cout << delim << endl;
+
+    cout << "testing copy() function ";
+    char *name_cstr_copy = new char[1000];
+    Str::size_type num_char_copies = name.copy(name_cstr_copy, 1000);
+    name_cstr_copy[num_char_copies] = '\0';
+    cout << "cstr copy of name after copy function --> (" <<
+        name_cstr_copy << ")" << endl;
+
+    cout << "Number of characters copied = " << num_char_copies << endl;
+    cout << delim << endl;
+    delete[] name_cstr_copy;
 }
