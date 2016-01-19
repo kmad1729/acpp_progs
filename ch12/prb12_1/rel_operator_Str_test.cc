@@ -49,4 +49,36 @@ int main()
 
     cout << endl;
     cout << delim << endl;
+
+    cout << "testing (!=) rel operator between Str and const char *" << endl;
+    if(c_str1 != s1) 
+        cout << c_str1 << " != " << s1 << " ? " << "true";
+    else
+        cout << c_str1 << " != " << s1 << " ? " << "false";
+
+    cout << endl;
+    if(c_str1 != s2) 
+        cout << c_str1 << " != " << s2 << " ? " << "true";
+    else
+        cout << c_str1 << " != " << s2 << " ? " << "false";
+
+    cout << endl;
+    cout << delim << endl;
+
+    cout << "testing (!=) rel operator" << endl;
+    if(s1 != s2) 
+        cout << s1 << " != " << s2 << " ? " << "true";
+    else
+        cout << s1 << " != " << s2 << " ? " << "false";
+
+    cout << endl;
+
+    if(s1 != s1) 
+        cout << s1 << " != " << s1 << " ? " << "true";
+    else
+        cout << s1 << " != " << s1 << " ? " << "false";
+
+    cout << endl;
+    cout << delim << endl;
+
 }
