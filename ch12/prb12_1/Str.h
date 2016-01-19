@@ -12,7 +12,7 @@ class Str {
         typedef char* iterator;
         typedef const char* const_itearator;
 
-        size_type size() const {return len;}
+        size_type size() const {return avail - data;}
 
         char& operator[](size_type i) { return data[i];}
         const char& operator[](size_type i) const { return data[i];}
@@ -35,7 +35,6 @@ class Str {
         iterator data;
         iterator avail;
         iterator limit;
-        size_type len;
 
         std::allocator<char> alloc;
 
@@ -45,21 +44,28 @@ class Str {
             void create(In, In);
 
         void grow();
+        void unchecked_append(const char c);
         void uncreate();
 };
 
 void Str::grow()
 {
-    size_type new_len = std::max(2 * len, size_type(1));
+    size_type new_len = std::max(2 * (limit - data), std::ptrdiff_t(1)) + 1;
 
-    char *new_data = alloc.allocate(new_len);
-    std::uninitialized_copy(data, data + len, new_data);
+    char* new_data = alloc.allocate(new_len);
+    char* new_avail = std::uninitialized_copy(data, avail, new_data);
 
     uncreate();
 
     data = new_data;
-    avail = data + len + 1;
+    avail = new_avail;
+    avail[0] = '\0';
     limit = data + new_len;
+}
+
+void Str::unchecked_append(const char c)
+{
+    alloc.construct(avail++, c);
 }
 
 
@@ -73,11 +79,13 @@ std::istream& operator>>(std::istream& is, Str& s)
             ;
         if(is) {
             do {
-                if(s.avail == s.limit)
+                if(s.avail == s.limit) {
+                    std::cout << "adding char (" << c << ") as avail = limit" << std::endl;
                     s.grow();
-                s.data[s.len++] = c;
+                }
+                s.unchecked_append(c);
             } while(is.get(c) && !isspace(c));
-            s.data[s.len] = '\0';
+            s.avail[0] = '\0';
         }
 
         if(is)
@@ -91,10 +99,9 @@ template <class In>
 void Str::create(In b, In e)
 {
     data = alloc.allocate(e - b + 1);
-    std::uninitialized_copy(b, e, data);
-    len = e - b;
-    data[len] = '\0';
-    avail = limit = data + len + 1;
+    avail = std::uninitialized_copy(b, e, data);
+    avail[0] = '\0';
+    limit = avail + 1;
 }
 
 std::ostream& operator<<(std::ostream& os, const Str& s)
@@ -109,8 +116,8 @@ void Str::create()
 {
     data = alloc.allocate(1);
     data[0] = '\0';
-    len = 0;
-    avail = limit = data + 1;
+    avail = data;
+    limit = data + 1;
 }
 
 void Str::create(size_type n, char c)
@@ -118,12 +125,12 @@ void Str::create(size_type n, char c)
     data = alloc.allocate(n + 1);
     std::uninitialized_fill(data, data + n, c);
     data[n] = '\0';
-    len = n;
-    avail = limit = data + len + 1;
+    avail = data + n;
+    limit =  avail + 1;
 }
 
 void Str::uncreate()
 {
-    alloc.deallocate(data, len + 1);
+    alloc.deallocate(data, limit - data);
     data = avail = limit = 0;
 }
