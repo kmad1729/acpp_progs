@@ -50,6 +50,14 @@ int main()
 
     cout << delim << endl;
 
+    cout << "testing c_str() function" << endl;
+    Str s2 = "12 fds aa *&^# @@\"";
+    char* s2_cstr = new char[s2.size() + 1];
+    std::strcpy(s2_cstr, s2.c_str());
+    cout << "s2_cstr --> " << s2_cstr << endl;
+    delete[] s2_cstr;
+    cout << delim << endl;
+
     cout << "testing copy() function ";
     char *name_cstr_copy = new char[1000];
     Str::size_type num_char_copies = name.copy(name_cstr_copy, 1000);
