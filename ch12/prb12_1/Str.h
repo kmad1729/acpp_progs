@@ -27,9 +27,11 @@ class Str {
         Str() { create(); }
         Str(size_type n, char c) { create(n, c);}
         Str(const char*);
+        Str(const Str&);
 
         template<class In>
             Str(In b, const In e) { create(b, e);}
+        Str& operator=(const Str&);
 
         ~Str() {uncreate();}
 
@@ -66,15 +68,37 @@ class Str {
         void uncreate();
 };
 
+Str::Str(const Str& s)
+{
+    create(s.begin(), s.end());
+}
+
+Str& Str::operator=(const Str& rhs)
+{
+    if(this != &rhs) {
+        uncreate();
+        create(rhs.begin(), rhs.end());
+    }
+    return *this;
+}
+
 Str& Str::operator+=(const Str& rhs)
 {
     for(Str::const_iterator i = rhs.begin(); i != rhs.end();
             i++) {
-        if(avail == limit)
+        if(avail + 1 == limit)
             grow();
-        unchecked_append(*i);
+        *avail++ = *i;
     }
+    avail[0] = '\0';
     return *this;
+}
+
+Str operator+(const Str& lhs, const Str& rhs)
+{
+    Str result = (lhs);
+    result += rhs;
+    return result;
 }
 
 Str::size_type Str::copy(char* s, size_type n) const 
@@ -121,7 +145,7 @@ std::istream& operator>>(std::istream& is, Str& s)
             ;
         if(is) {
             do {
-                if(s.avail == s.limit) {
+                if(s.avail + 1 == s.limit) {
                     s.grow();
                 }
                 s.unchecked_append(c);
@@ -172,6 +196,10 @@ void Str::create(size_type n, char c)
 
 void Str::uncreate()
 {
+    iterator tmp = avail;
+    while(tmp != str_beg) {
+        alloc.destroy(--tmp);
+    }
     alloc.deallocate(str_beg, limit - str_beg);
     str_beg = avail = limit = 0;
 }
