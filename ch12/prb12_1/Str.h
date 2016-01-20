@@ -11,13 +11,13 @@ class Str {
         typedef size_t size_type;
         typedef char value_type;
         typedef char* iterator;
-        typedef const char* const_itearator;
+        typedef const char* const_iterator;
 
         iterator begin() {return str_beg;}
-        const_itearator begin() const {return str_beg;}
+        const_iterator begin() const {return str_beg;}
 
         iterator end() {return avail;}
-        const_itearator end() const {return avail;}
+        const_iterator end() const {return avail;}
 
         size_type size() const {return avail - str_beg;}
 
@@ -43,6 +43,8 @@ class Str {
 
         size_type copy(char *, size_type) const;
 
+        Str& operator+=(const Str&);
+
         void clear() {uncreate();}
 
 
@@ -63,6 +65,17 @@ class Str {
         void unchecked_append(const char c);
         void uncreate();
 };
+
+Str& Str::operator+=(const Str& rhs)
+{
+    for(Str::const_iterator i = rhs.begin(); i != rhs.end();
+            i++) {
+        if(avail == limit)
+            grow();
+        unchecked_append(*i);
+    }
+    return *this;
+}
 
 Str::size_type Str::copy(char* s, size_type n) const 
 {
