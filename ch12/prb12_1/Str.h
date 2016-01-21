@@ -139,7 +139,19 @@ std::istream& getline(std::istream& is, Str& s)
 {
     if(is) {
         s.clear();
+        Str result;
         char c;
+
+        while(is.get(c) && c != '\n') {
+            if(result.avail + 1 == result.limit)
+                result.grow();
+            *(result.avail++) = c;
+        }
+
+        s = result;
+
+        if(c != '\n')
+            is.unget();
         
     }
     return is;
@@ -150,17 +162,20 @@ std::istream& operator>>(std::istream& is, Str& s)
 {
     if(is) {
         s.clear();
+        Str result;
         char c;
 
         while(is.get(c) && std::isspace(c))
             ;
         if(is) {
             do {
-                if(s.avail + 1 == s.limit)
-                    s.grow();
+                if(result.avail + 1 == result.limit)
+                    result.grow();
+                *(result.avail++) = c;
             } while(is.get(c) && !isspace(c));
-            s.avail[0] = '\0';
+            result.avail[0] = '\0';
         }
+        s = result;
 
         if(is)
             is.unget();
