@@ -36,6 +36,7 @@ class Str {
         ~Str() {uncreate();}
 
         friend std::istream& operator>>(std::istream&, Str&);
+        friend std::istream& getline(std::istream&, Str&);
 
         //c_str return a NUL terminated char array
         const char* c_str() const { return str_beg; };
@@ -134,6 +135,16 @@ void Str::unchecked_append(const char c)
     alloc.construct(avail++, c);
 }
 
+std::istream& getline(std::istream& is, Str& s)
+{
+    if(is) {
+        s.clear();
+        char c;
+        
+    }
+    return is;
+}
+
 
 std::istream& operator>>(std::istream& is, Str& s)
 {
@@ -145,10 +156,8 @@ std::istream& operator>>(std::istream& is, Str& s)
             ;
         if(is) {
             do {
-                if(s.avail + 1 == s.limit) {
+                if(s.avail + 1 == s.limit)
                     s.grow();
-                }
-                s.unchecked_append(c);
             } while(is.get(c) && !isspace(c));
             s.avail[0] = '\0';
         }

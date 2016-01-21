@@ -34,7 +34,7 @@ int main()
     Str name;
     cout << "please enter your name: ";
     cin >> name;
-    cout << "Hello, " << name << "!" << endl;
+    cout << "Hello, (" << name << ")!" << endl;
     cout << delim << endl;
 
     cout << "testing data() function " << endl;
