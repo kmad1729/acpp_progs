@@ -9,7 +9,7 @@ _ALL=permute_using_iterator c_in_cpp c_rev_str c_int_char_cast \
 		c_transform_space remove_ex gen_permute \
 		merge_vec_of_vectors meeting_assign b_tree_reconstruction \
 		atoi_impl rotated_arr_search path_exists my_queue_3_5 \
-		get_min_ht_btree
+		get_min_ht_btree priority_queue_test
 
 all: $(_ALL)
 
@@ -59,6 +59,9 @@ my_queue_3_5: my_queue_3_5.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 get_min_ht_btree: get_min_ht_btree.cc
+	$(CC) -o $@ $< $(CC_FLAGS)
+
+priority_queue_test: priority_queue_test.cc
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 clean:
