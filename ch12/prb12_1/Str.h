@@ -5,6 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #include <cstring>
+#include <string>
 
 class Str {
     public:
@@ -112,6 +113,10 @@ Str::size_type Str::copy(char* s, size_type n) const
 
 Str::Str(const char* s)
 {
+#ifdef TEST_CONCAT_FUNC
+    std::cout << "CALLING THE CONST CHAR * CONSTRUCTOR to create Str" <<
+        "(" << s << ")" << std::endl;
+#endif
     create(s, s + std::strlen(s));
 }
 
@@ -187,6 +192,10 @@ std::istream& operator>>(std::istream& is, Str& s)
 template <class In>
 void Str::create(In b, In e)
 {
+#ifdef TEST_CONCAT_FUNC
+    std::cout << "CREATING A NEW STRING (" << std::string(b, e) << ")" 
+        << std::endl;
+#endif
     str_beg = alloc.allocate(e - b + 1);
     avail = std::uninitialized_copy(b, e, str_beg);
     avail[0] = '\0';
@@ -203,6 +212,9 @@ std::ostream& operator<<(std::ostream& os, const Str& s)
 
 void Str::create()
 {
+#ifdef TEST_CONCAT_FUNC
+    std::cout << "CREATING EMPTY STRING " << std::endl;
+#endif
     str_beg = alloc.allocate(1);
     str_beg[0] = '\0';
     avail = str_beg;
@@ -211,6 +223,9 @@ void Str::create()
 
 void Str::create(size_type n, char c)
 {
+#ifdef TEST_CONCAT_FUNC
+    std::cout << "CREATING STRING (" << std::string(n,c) << ")" << std::endl;
+#endif
     str_beg = alloc.allocate(n + 1);
     std::uninitialized_fill(str_beg, str_beg + n, c);
     str_beg[n] = '\0';
