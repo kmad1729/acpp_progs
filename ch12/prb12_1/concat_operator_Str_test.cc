@@ -26,12 +26,18 @@ int main()
     cout << "s2 --> " << s2 << endl;
     cout << delim << endl;
 
-    cout << "testing + operator" << endl;
+    cout << "testing + operator with c_str" << endl;
     Str s3 = s1 + s2 + c_str1;
     cout << "s3 = s1 + s2 + c_str1 " << endl;
     cout << "s3 --> (" << s3 << ")" << endl;
     cout << "s1 --> " << s1 << endl;
     //s1 = "foo";
+    cout << delim << endl;
+
+    cout << "testing += operator with c_str" << endl;
+    Str s4(4, '#');
+    s4 += c_str1;
+    cout << s4 << endl;
     cout << delim << endl;
 
 }

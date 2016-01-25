@@ -48,6 +48,7 @@ class Str {
         size_type copy(char *, size_type) const;
 
         Str& operator+=(const Str&);
+        Str& operator+=(const char*);
 
         void clear() {uncreate();}
 
@@ -96,10 +97,30 @@ Str& Str::operator+=(const Str& rhs)
     return *this;
 }
 
+Str& Str::operator+=(const char* s)
+{
+    for(Str::const_iterator i = s; i != s + std::strlen(s);
+            i++) {
+        if(avail + 1 == limit)
+            grow();
+        *avail++ = *i;
+    }
+    avail[0] = '\0';
+    return *this;
+}
+
 Str operator+(const Str& lhs, const Str& rhs)
 {
     Str result = (lhs);
     result += rhs;
+    return result;
+}
+
+//solving problem 12-5
+Str operator+(const Str& lhs, const char* s)
+{
+    Str result = (lhs);
+    result += s;
     return result;
 }
 
@@ -114,7 +135,7 @@ Str::size_type Str::copy(char* s, size_type n) const
 Str::Str(const char* s)
 {
 #ifdef TEST_CONCAT_FUNC
-    std::cout << "CALLING THE CONST CHAR * CONSTRUCTOR to create Str" <<
+    std::cout << "CALLING THE CONST char * CONSTRUCTOR to create Str " <<
         "(" << s << ")" << std::endl;
 #endif
     create(s, s + std::strlen(s));
