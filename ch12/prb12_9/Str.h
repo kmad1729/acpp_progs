@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cstring>
 #include <string>
+#include <iterator>
 
 class Str {
     public:
@@ -229,8 +230,7 @@ void Str::create(In b, In e)
 
 std::ostream& operator<<(std::ostream& os, const Str& s)
 {
-    for(Str::size_type i = 0; i < s.size(); i++)
-        os << s[i];
+    std::copy(s.begin(), s.end(), std::ostream_iterator<char>(os));
     return os;
 }
 
