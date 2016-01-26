@@ -30,6 +30,9 @@ class Str {
         Str(const char*);
         Str(const Str&);
 
+        //problem 12-6 check if Str is empty
+        bool empty() const {return str_beg == avail;}
+
         template<class In>
             Str(In b, const In e) { create(b, e);}
         Str& operator=(const Str&);

@@ -39,5 +39,12 @@ int main()
     s4 += c_str1;
     cout << s4 << endl;
     cout << delim << endl;
+    
+    cout << "Checking empty operation on a string -->" << endl;
+    Str empty_str;
+    cout << "empty_str --> (" << empty_str << ")" << endl;
+    cout << "empty_str.empty() ? " << empty_str.empty() << endl;
+    cout << "s1.empty() ? " << s1.empty() << endl;
+    cout << delim << endl;
 
 }
