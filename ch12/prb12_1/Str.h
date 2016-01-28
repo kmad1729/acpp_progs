@@ -53,6 +53,9 @@ class Str {
         Str& operator+=(const Str&);
         Str& operator+=(const char*);
 
+        template<class In>
+            void insert(iterator, In, In);
+
         void clear() {uncreate();}
 
 
@@ -77,6 +80,27 @@ class Str {
 Str::Str(const Str& s)
 {
     create(s.begin(), s.end());
+}
+
+template<class In>
+    void Str::insert(iterator p, In b, In e)
+{
+    size_type size_needed = e - b + 2;
+    std::cout << "old size = " << limit - str_beg << std::endl;
+    while(avail + size_needed >= limit)
+        grow();
+    std::cout << "new size = " << limit - str_beg << std::endl;
+    iterator back = avail + size_needed;
+    for(iterator i = avail; i >= p && i >= str_beg; i--) {
+        std::cout << *i << "";
+        *back = *i;
+        back--;
+    }
+    std::cout << std::endl;
+
+    std::cout << "copying " << std::string(b, e) << std::endl;
+    std::copy(b, e, p);
+    avail += size_needed;
 }
 
 Str& Str::operator=(const Str& rhs)

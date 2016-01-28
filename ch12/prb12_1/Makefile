@@ -6,7 +6,7 @@ ifeq ($(shell uname -s), Darwin)
 endif
 
 _ALL = test_Str rel_operator_Str_test concat_operator_Str_test \
-	   getline_test_Str_cat test_str_output_operator
+	   getline_test_Str_cat insert_test
 
 all: $(_ALL)
 
@@ -22,7 +22,7 @@ concat_operator_Str_test: concat_operator_Str_test.cc
 getline_test_Str_cat: getline_test_Str_cat.cc
 	$(CC) -o $@ $(CC_Flags) $^
 
-test_str_output_operator: test_str_output_operator.cc
+insert_test: insert_test.cc
 	$(CC) -o $@ $(CC_Flags) $^
 
 clean:
