@@ -85,22 +85,35 @@ Str::Str(const Str& s)
 template<class In>
     void Str::insert(iterator p, In b, In e)
 {
-    size_type size_needed = e - b + 2;
+    size_type extra_size_needed = e - b;
+    size_type size_available = limit - avail - 1;
+    size_type old_len = avail - str_beg;
     std::cout << "old size = " << limit - str_beg << std::endl;
-    while(avail + size_needed >= limit)
+
+    while(size_available < extra_size_needed) {
         grow();
+        size_available = limit - avail - 1;
+    }
+
     std::cout << "new size = " << limit - str_beg << std::endl;
-    iterator back = avail + size_needed;
-    for(iterator i = avail; i >= p && i >= str_beg; i--) {
+    iterator back = avail + extra_size_needed;
+    iterator i = avail;
+    while(i >= p) {
         std::cout << *i << "";
         *back = *i;
         back--;
+        if(i != str_beg)
+            i--;
+        else
+            break;
     }
+
     std::cout << std::endl;
 
-    std::cout << "copying " << std::string(b, e) << std::endl;
+    avail = str_beg + extra_size_needed + old_len;
+    avail[0] = '\0';
+    //std::cout << "copying " << std::string(b, e) << std::endl;
     std::copy(b, e, p);
-    avail += size_needed;
 }
 
 Str& Str::operator=(const Str& rhs)
