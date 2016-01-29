@@ -55,11 +55,16 @@ int main()
     s3 = "World";
     cout << "s3 --> (" << s3 << ")" << endl;
 
+    s3 += s3;
+    cout << "s3 after s3+= s3--> (" << s3 << ")" << endl;
+
+
 
     cout << delim << endl;
 
     cout << "clearing s3" << endl;
     s3.clear();
     cout << "s3 --> (" << s3 << ")" << endl;
+
 
 }

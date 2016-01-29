@@ -87,22 +87,37 @@ template<class In>
 {
     size_type size_available = limit - 1 - avail;
     size_type size_needed = e - b;
+    //std::cout << "orig size --> " << limit - str_beg << std::endl;
+    //std::cout << "p - str_beg = " << p - str_beg << std::endl;
+    size_type p_pos = p - str_beg;
     while(size_available < size_needed) {
         grow();
         size_available = limit - 1 - avail;
     }
+    //THIS IS IMPORTANT AS p is lost after calling grow()!
+    p = str_beg + p_pos;
+    //std::cout << "new size --> " << limit - str_beg << std::endl;
+    //std::cout << "p - str_beg = " << p - str_beg << std::endl;
 
-    iterator new_p = p + size_needed;
+    iterator back = avail + size_needed;
 
-    for(iterator i = p; i < avail + 1; i++) {
-        *new_p++ = *i;
+    //std::cout << "string(p, avail) = " << std::string(p, avail) << std::endl;
+    for(iterator i = avail; i >= p; i--) {
+        //std::cout << "i - str_beg = " << i - str_beg << std::endl;
+        //std::cout << "i - p = " << i - p << std::endl;
+        *back = *i;
+        back--;
     }
+    //std::cout << "string(p, avail) = " << std::string(p, avail) << std::endl;
+
+    //std::cout << "p - str_beg = " << p - str_beg << std::endl;
 
     for(iterator i = b; i < e; i++) {
         *p++ = *i;
     }
+    //std::cout << "p - str_beg = " << p - str_beg << std::endl;
 
-    avail = str_beg + size_avail + size_needed;
+    avail = avail + size_needed;
 }
 
 Str& Str::operator=(const Str& rhs)
@@ -116,10 +131,25 @@ Str& Str::operator=(const Str& rhs)
 
 Str& Str::operator+=(const Str& rhs)
 {
+    size_type req_space = rhs.size();
+    size_type avail_space = limit - 1 - avail;
+
+    //std::cout << "old avail space = " << avail_space << std::endl;
+    //std::cout << "req space = " << req_space << std::endl;
+
+    while(avail_space < req_space) {
+        grow();
+        avail_space = limit - 1 - avail;
+    }
+
+    //std::cout << "new avail space = " << avail_space << std::endl;
+    //std::cout << "req space = " << req_space << std::endl;
+
+    //std::cout << "avail - str_beg = " << avail -str_beg << std::endl;
+    //std::cout << "limit - str_beg = " << limit -str_beg << std::endl;
     for(Str::const_iterator i = rhs.begin(); i != rhs.end();
             i++) {
-        if(avail + 1 == limit)
-            grow();
+        //std::cout << "copying " << *i << std::endl;
         *avail++ = *i;
     }
     avail[0] = '\0';
@@ -128,10 +158,18 @@ Str& Str::operator+=(const Str& rhs)
 
 Str& Str::operator+=(const char* s)
 {
+    size_type req_space = std::strlen(s);
+    size_type avail_space = limit - 1 - avail;
+    while(avail_space < req_space) {
+        grow();
+        avail_space = limit - 1 - avail;
+    }
+
+    //std::cout << "new avail space = " << avail_space << std::endl;
+    //std::cout << "req space = " << req_space << std::endl;
+
     for(Str::const_iterator i = s; i != s + std::strlen(s);
             i++) {
-        if(avail + 1 == limit)
-            grow();
         *avail++ = *i;
     }
     avail[0] = '\0';
@@ -288,11 +326,13 @@ void Str::create(size_type n, char c)
 void Str::uncreate()
 {
     //std::cout << "uncreating (" << std::string(str_beg, avail) << ")" << std::endl;
-    iterator tmp = avail;
-    while(tmp != str_beg) {
-        alloc.destroy(--tmp);
+    if(str_beg) {
+        iterator tmp = avail;
+        while(tmp != str_beg) {
+            alloc.destroy(--tmp);
+        }
+        alloc.deallocate(str_beg, limit - str_beg);
     }
-    alloc.deallocate(str_beg, limit - str_beg);
     str_beg = avail = limit = 0;
 }
 

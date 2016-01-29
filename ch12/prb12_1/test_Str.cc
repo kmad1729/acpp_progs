@@ -4,6 +4,9 @@
 #include <cstdlib>
 #include <cstring>
 
+#include <string>
+
+using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
@@ -68,5 +71,14 @@ int main()
     cout << "Number of characters copied = " << num_char_copies << endl;
     cout << delim << endl;
     delete[] name_cstr_copy;
+
+    Str very_long_string = "abcdefghijklmnopqrstuvwxyz";
+    cout << "very_long_string --> (" << very_long_string << ")" << endl;
+    very_long_string += "thesePretzelsAreMakingMeTHirsty";
+    cout << "very_long_string --> (" << very_long_string << ")" << endl;
+
+    string foo = "foo";
+    foo += foo;
+    cout << "foo -> " << foo << endl;
     
 }

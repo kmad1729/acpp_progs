@@ -36,9 +36,16 @@ int main()
 
     cout << delim << endl;
 
-    insert_str = " to all objects";
+    insert_str = "And also ";
     cout << "inserting (" << insert_str << ") at s1.begin()" << endl;
     s1.insert(s1.begin(), insert_str.begin(), insert_str.end());
+    cout << "s1 --> (" << s1 << ")" << endl;
+
+    cout << delim << endl;
+
+    insert_str = " to all objects";
+    cout << "inserting (" << insert_str << ") at s1.begin()" << endl;
+    s1.insert(s1.end(), insert_str.begin(), insert_str.end());
     cout << "s1 --> (" << s1 << ")" << endl;
 
     cout << delim << endl;
