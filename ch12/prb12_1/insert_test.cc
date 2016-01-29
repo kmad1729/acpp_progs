@@ -44,7 +44,7 @@ int main()
     cout << delim << endl;
 
     insert_str = " to all objects";
-    cout << "inserting (" << insert_str << ") at s1.begin()" << endl;
+    cout << "inserting (" << insert_str << ") at s1.end()" << endl;
     s1.insert(s1.end(), insert_str.begin(), insert_str.end());
     cout << "s1 --> (" << s1 << ")" << endl;
 
