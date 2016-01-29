@@ -85,35 +85,24 @@ Str::Str(const Str& s)
 template<class In>
     void Str::insert(iterator p, In b, In e)
 {
-    size_type extra_size_needed = e - b;
-    size_type size_available = limit - avail - 1;
-    size_type old_len = avail - str_beg;
-    std::cout << "old size = " << limit - str_beg << std::endl;
-
-    while(size_available < extra_size_needed) {
+    size_type size_available = limit - 1 - avail;
+    size_type size_needed = e - b;
+    while(size_available < size_needed) {
         grow();
-        size_available = limit - avail - 1;
+        size_available = limit - 1 - avail;
     }
 
-    std::cout << "new size = " << limit - str_beg << std::endl;
-    iterator back = avail + extra_size_needed;
-    iterator i = avail;
-    while(i >= p) {
-        std::cout << *i << "";
-        *back = *i;
-        back--;
-        if(i != str_beg)
-            i--;
-        else
-            break;
+    iterator new_p = p + size_needed;
+
+    for(iterator i = p; i < avail + 1; i++) {
+        *new_p++ = *i;
     }
 
-    std::cout << std::endl;
+    for(iterator i = b; i < e; i++) {
+        *p++ = *i;
+    }
 
-    avail = str_beg + extra_size_needed + old_len;
-    avail[0] = '\0';
-    //std::cout << "copying " << std::string(b, e) << std::endl;
-    std::copy(b, e, p);
+    avail = str_beg + size_avail + size_needed;
 }
 
 Str& Str::operator=(const Str& rhs)
@@ -298,6 +287,7 @@ void Str::create(size_type n, char c)
 
 void Str::uncreate()
 {
+    //std::cout << "uncreating (" << std::string(str_beg, avail) << ")" << std::endl;
     iterator tmp = avail;
     while(tmp != str_beg) {
         alloc.destroy(--tmp);
