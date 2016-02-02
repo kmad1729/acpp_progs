@@ -72,4 +72,11 @@ void Vec<T>::create(const_iterator b, const_iterator e)
 template<class T>
 void Vec<T>::uncreate()
 {
+    if(data) {
+        iterator it = avail;
+        while(it != data)
+            alloc.destroy(--it);
+        alloc.deallocate(data, limit - data);
+    }
+    data = avail = limit = 0;
 }
