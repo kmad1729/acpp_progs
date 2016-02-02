@@ -14,6 +14,12 @@ class Vec {
         typedef T value_type;
 
         size_type size() {return avail - data;}
+
+        iterator begin() {return data;}
+        const_iterator begin() const {return data;}
+
+        iterator end() {return avail;}
+        const_iterator end() const {return avail;}
         
         T& operator[](size_type i) {return data[i];}
         const T& operator[](size_type i) const {return data[i];}
@@ -52,7 +58,7 @@ void Vec<T>::create() {
 template<class T>
 void Vec<T>::create(size_type n, const T& val) {
     data = alloc.allocate(n);
-    std::uninitialized_fill(n, val);
+    std::uninitialized_fill(data, data + n, val);
     avail = limit = data + n;
 }
 
