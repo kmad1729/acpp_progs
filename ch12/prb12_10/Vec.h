@@ -13,10 +13,10 @@ class Vec {
         typedef ptrdiff_t difference_type;
         typedef T value_type;
 
-        size_type size() {avail - data;}
+        size_type size() {return avail - data;}
         
         T& operator[](size_type i) {return data[i];}
-        const T& operator[](size_type i) {return data[i];}
+        const T& operator[](size_type i) const {return data[i];}
 
         explicit Vec(size_type n, const T& val) {create(n, val);}
         Vec() {create();}
@@ -40,6 +40,8 @@ class Vec {
         void create();
         void create(size_type, const T&);
         void create(const_iterator, const_iterator);
+
+        void uncreate();
 };
 
 template<class T>
