@@ -21,4 +21,12 @@ int main()
     cout << "("; 
     copy(five_ones.begin(), five_ones.end(), ostream_iterator<int>(cout, ","));
     cout << ")" << endl;
+
+    cout << "clearing five ones" << endl;
+    five_ones.clear();
+
+    cout << "five_ones -->" << endl;
+    cout << "("; 
+    copy(five_ones.begin(), five_ones.end(), ostream_iterator<int>(cout, ","));
+    cout << ")" << endl;
 }

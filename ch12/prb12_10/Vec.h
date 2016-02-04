@@ -34,6 +34,8 @@ class Vec {
 
         ~Vec() {uncreate();}
 
+        void clear() {uncreate();}
+
 
 
     private:
