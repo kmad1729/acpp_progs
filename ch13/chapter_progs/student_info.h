@@ -26,5 +26,10 @@ class Grad: public Core {
     public:
         Grad();
         Grad(std::istream&);
-        std::istream& read
+        std::istream& read;
+
+    private:
+        double thesis;
 };
+
+
