@@ -26,7 +26,7 @@ class Grad: public Core {
     public:
         Grad();
         Grad(std::istream&);
-        std::istream& read;
+        std::istream& read(std::istream&);
 
     private:
         double thesis;
@@ -64,3 +64,14 @@ std::istream& Core::read_common(std::istream& in)
     return in;
 }
 
+Grad::Grad(): thesis(0) { }
+
+Grad::Grad(std::istream& in) {read(in);}
+
+std::istream& Grad::read(std::istream& in)
+{
+    read_common(in);
+    in >> thesis;
+    read_hw(in, homework);
+    return in;
+}

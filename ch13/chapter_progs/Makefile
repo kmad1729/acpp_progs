@@ -11,3 +11,6 @@ all: $(_ALL)
 
 test_grad_student: test_grad_student.cc
 	$(CC) $(CC_Flags) -o $@ $^
+
+clean:
+	rm -rf $(_ALL)
