@@ -36,19 +36,6 @@ Core::Core(): midterm(0), final(0) { }
 
 Core::Core(std::istream& in) { read(in); }
 
-std::istream& Core::read(std::istream& in)
-{
-    read_common(in);
-    read_hw(in, homework);
-    return in;
-}
-
-std::istream& Core::read_common(std::istream& in)
-{
-    in >> n >> midterm >> final;
-    return in;
-}
-
 std::istream& read_hw(std::istream& in, std::vector<double>& hw)
 {
     if(in) {
@@ -63,3 +50,17 @@ std::istream& read_hw(std::istream& in, std::vector<double>& hw)
     }
     return in;
 }
+
+std::istream& Core::read(std::istream& in)
+{
+    read_common(in);
+    read_hw(in, homework);
+    return in;
+}
+
+std::istream& Core::read_common(std::istream& in)
+{
+    in >> n >> midterm >> final;
+    return in;
+}
+
