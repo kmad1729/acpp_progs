@@ -1,5 +1,6 @@
 #pragma once
 
+#include "grade.h"
 #include <string>
 #include <algorithm>
 #include <iostream>
@@ -84,4 +85,9 @@ std::istream& Grad::read(std::istream& in)
     in >> thesis;
     read_hw(in, homework);
     return in;
+}
+
+bool compare(const Core& c1, const Core& c2)
+{
+    return c1.name().size() < c2.name().size();
 }
