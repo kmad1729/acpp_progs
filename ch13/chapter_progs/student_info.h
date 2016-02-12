@@ -11,6 +11,7 @@ class Core {
         Core(std::istream&);
         std::istream& read(std::istream&);
         std::string name() const {return n;}
+        double grade() const;
 
     protected:
         std::istream& read_common(std::istream&);
@@ -27,6 +28,7 @@ class Grad: public Core {
         Grad();
         Grad(std::istream&);
         std::istream& read(std::istream&);
+        double grade() const;
 
     private:
         double thesis;
@@ -35,6 +37,14 @@ class Grad: public Core {
 Core::Core(): midterm(0), final(0) { }
 
 Core::Core(std::istream& in) { read(in); }
+
+double Core::grade() const {
+    return ::grade(midterm, final, homework);
+}
+
+double Grad::grade() const {
+    return std::min(Core::grade(), thesis);
+}
 
 std::istream& read_hw(std::istream& in, std::vector<double>& hw)
 {
