@@ -57,6 +57,15 @@ int main()
     cout << delim << endl;
 
     vector<int> v;
+    cout << "inp vector --> " << endl;
+    copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+    cout << endl;
+
+    quick_sort(v.begin(), v.end());
+    cout << "after sort --> " << endl;
+    copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+    cout << endl;
+
     v.push_back(42);
     cout << "inp vector --> " << endl;
     copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
