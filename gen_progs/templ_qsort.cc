@@ -59,12 +59,14 @@ int main()
     vector<int> v;
     v.push_back(42);
     cout << "inp vector --> " << endl;
-    copy(inp_arr, inp_arr + arr_size, ostream_iterator<int>(cout, " "));
+    copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
     cout << endl;
 
-    quick_sort(inp_arr, inp_arr + arr_size);
+    quick_sort(v.begin(), v.end());
     cout << "after sort --> " << endl;
-    copy(inp_arr, inp_arr + arr_size, ostream_iterator<int>(cout, " "));
+    copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
     cout << endl;
+
+
     cout << delim << endl;
 }
