@@ -10,9 +10,11 @@ class Core {
     public:
         Core();
         Core(std::istream&);
-        std::istream& read(std::istream&);
+        virtual std::istream& read(std::istream&);
+        virtual double grade() const;
         std::string name() const {return n;}
-        double grade() const;
+
+        virtual ~Core() { };
 
     protected:
         std::istream& read_common(std::istream&);
@@ -90,4 +92,9 @@ std::istream& Grad::read(std::istream& in)
 bool compare(const Core& c1, const Core& c2)
 {
     return c1.name().size() < c2.name().size();
+}
+
+bool compare_Core_pts(const Core* c1, const Core* c2)
+{
+    return compare(*c1, *c2);
 }

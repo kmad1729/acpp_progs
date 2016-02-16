@@ -7,7 +7,7 @@ G Seinfel 86 65 90 82 70 63
 U Superman 71 90 78 94 80 
 G Clark 78 88 67 84 68 98 
 G Hero 98 93 92 70 85 69 
-G Fowler 94 90 94 98 70 78 
+G Fowler 94 90 64 98 70 78 
 U Genius 66 92 75 67 83 
 G Kanye 71 78 100 79 66 79 
 G Kim 78 65 63 64 87 75 
