@@ -1,0 +1,13 @@
+G Raymon 93 70 90 98 61 83 
+U Rachel 90 62 70 68 81 
+G Guido 88 65 100 77 77 94 
+G Kyle 89 90 93 95 89 71 
+U Kramer 90 62 82 93 73 
+U Seinfel 85 74 85 94 68 
+U Superman 69 92 86 73 93 
+U Clark 84 70 93 69 92 
+G Hero 93 92 93 65 82 72 
+G Fowler 65 99 65 95 68 77 
+U Genius 62 85 88 97 61 
+G Kanye 73 63 64 87 96 92 
+G Kim 84 76 95 67 78 97 
