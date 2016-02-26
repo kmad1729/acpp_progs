@@ -1,15 +1,15 @@
 #include <cstdio>
+#include <cstring>
 
 //reverse a string
 void reverse(char *s)
 {
-    char *end =s;
-    while(*end != '\0') end++;
-    end--;
-    while(s < end) {
-        char tmp = *s;
-        *s++ = *end;
-        *end-- = tmp;
+    size_t len = strlen(s);
+    size_t mid = len / 2;
+    for(size_t i = 0; i < mid; i++) {
+        char tmp = s[i];
+        s[i] = s[len - i - 1];
+        s[len - i - 1] = tmp;
     }
 }
 
