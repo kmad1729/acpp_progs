@@ -8,8 +8,9 @@ class Core {
     public:
         Core(): midterm(0), final_grade(0) { };
         Core(std::istream& is) {read(is);}
-        std::istream& read(std::istream&);
-        virtual std::string name() const;
+        std::string name() const;
+
+        virtual std::istream& read(std::istream&);
         virtual double grade() const;
 
         virtual ~Core() { };

@@ -1,4 +1,4 @@
-CC=c++
+CC=g++
 CC_Flags= -Wall -g
 
 OBJ_FILES= student_info.o grade.o median.o

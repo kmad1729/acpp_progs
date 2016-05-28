@@ -4,6 +4,7 @@
 #include <cctype>
 #include <memory>
 #include <algorithm>
+#include <cstddef>
 
 template <class T>
 class Vec {

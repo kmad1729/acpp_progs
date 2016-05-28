@@ -44,7 +44,7 @@ int main()
 
     sort(students.begin(), students.end(), compare_Core_ptrs);
 
-    for(int i = 0; i < students.size(); i++) {
+    for(vector<Core*>::size_type i = 0; i < students.size(); i++) {
         cout << (students[i] -> name()) << 
             string(maxlen + 1 - (students[i] -> name()).size(), ' ');
         try {
