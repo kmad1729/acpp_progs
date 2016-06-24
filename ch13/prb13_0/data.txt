@@ -1,3 +1,4 @@
 G kramer 90 80 80 88 88 89 53
 U seinfeld 90 80 88 88 89 83
 U elaine 90 70 88 88 89 83
+G newmann 90 70 88 88 89 83
